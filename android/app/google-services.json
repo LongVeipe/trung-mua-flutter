@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "630868110614",
+    "project_id": "trung-mua",
+    "storage_bucket": "trung-mua.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630868110614:android:06daccd3c1002ec8493437",
+        "android_client_info": {
+          "package_name": "mcom.app.trungmua"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630868110614-fjal1hn412ukv42m219g0uf1bpi45pr6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mcom.app.trungmua",
+            "certificate_hash": "cf37c8fee0288c1397be3552845ed275ffc823f5"
+          }
+        },
+        {
+          "client_id": "630868110614-vp35jrkl9l7et42bcrb8kbma6sh9unur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkt0fNaENlnKDTgjaVYVAEnHjd9h-ikvM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630868110614-vp35jrkl9l7et42bcrb8kbma6sh9unur.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "630868110614-l2s6pnmkt55elqg9mfpo1mee7phmhjmj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mcom.app.trungmua"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630868110614:android:13b1bbe603974837493437",
+        "android_client_info": {
+          "package_name": "trungmua.miagri.vn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630868110614-mhohoe5cps4vaoa2ijouidtfuivcah4r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "trungmua.miagri.vn",
+            "certificate_hash": "cf37c8fee0288c1397be3552845ed275ffc823f5"
+          }
+        },
+        {
+          "client_id": "630868110614-vp35jrkl9l7et42bcrb8kbma6sh9unur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkt0fNaENlnKDTgjaVYVAEnHjd9h-ikvM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630868110614-vp35jrkl9l7et42bcrb8kbma6sh9unur.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "630868110614-l2s6pnmkt55elqg9mfpo1mee7phmhjmj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mcom.app.trungmua"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

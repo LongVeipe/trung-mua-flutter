@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>630868110614-pk0ssoaik7tft8bhl1dqi67uqdcl2a7s.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.630868110614-pk0ssoaik7tft8bhl1dqi67uqdcl2a7s</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>630868110614-fjal1hn412ukv42m219g0uf1bpi45pr6.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBphZ3x7JiOAWLMoXJCJbZs-cTsJ_hTQDU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>630868110614</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>trungmua.miagri.vn</string>
+	<key>PROJECT_ID</key>
+	<string>trung-mua</string>
+	<key>STORAGE_BUCKET</key>
+	<string>trung-mua.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:630868110614:ios:b6ba0991a76b5ea8493437</string>
+</dict>
+</plist>

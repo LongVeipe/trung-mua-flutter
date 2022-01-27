@@ -1,0 +1,74 @@
+{
+  "identifier" : "33064AF2",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "99",
+      "familyShareable" : false,
+      "internalID" : "5FA3163E",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "scan disease",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "",
+          "displayName" : "việt nam",
+          "locale" : "vi"
+        }
+      ],
+      "productID" : "scan_disease_test1",
+      "referenceName" : "scan disease",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "153C8326",
+      "localizations" : [
+
+      ],
+      "name" : "Nhận diện AI",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+            {
+              "internalID" : "BE725733",
+              "offerID" : "",
+              "paymentMode" : "free",
+              "referenceName" : "Dùng thử 14 ngày",
+              "subscriptionPeriod" : "P2W"
+            }
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "44849A47",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Nhận diện cây lúa",
+              "displayName" : "Cây lúa",
+              "locale" : "vi"
+            }
+          ],
+          "productID" : "caylua99k",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Cây lúa",
+          "subscriptionGroupID" : "153C8326",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}
