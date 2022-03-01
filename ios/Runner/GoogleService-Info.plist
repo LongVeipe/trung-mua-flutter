@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>630868110614-pk0ssoaik7tft8bhl1dqi67uqdcl2a7s.apps.googleusercontent.com</string>
+	<string>121797388043-tcq0aad9qm3m1f7052c7h1m1rk81e45j.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.630868110614-pk0ssoaik7tft8bhl1dqi67uqdcl2a7s</string>
+	<string>com.googleusercontent.apps.121797388043-tcq0aad9qm3m1f7052c7h1m1rk81e45j</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>630868110614-fjal1hn412ukv42m219g0uf1bpi45pr6.apps.googleusercontent.com</string>
+	<string>121797388043-a6o96ggunbm95837hm3k0vf15dgagtqa.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBphZ3x7JiOAWLMoXJCJbZs-cTsJ_hTQDU</string>
+	<string>AIzaSyDL-PxzPR1SwfxopvGrKMg_RBWJ2Nvjsx0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>630868110614</string>
+	<string>121797388043</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>trungmua.miagri.vn</string>
+	<string>trungmua.mismart.ai</string>
 	<key>PROJECT_ID</key>
-	<string>trung-mua</string>
+	<string>app-trung-mua-c6213</string>
 	<key>STORAGE_BUCKET</key>
-	<string>trung-mua.appspot.com</string>
+	<string>app-trung-mua-c6213.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:630868110614:ios:b6ba0991a76b5ea8493437</string>
+	<string>1:121797388043:ios:4a3163596f3e17b4b1240e</string>
 </dict>
 </plist>
