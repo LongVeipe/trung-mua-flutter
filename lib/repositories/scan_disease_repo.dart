@@ -9,15 +9,15 @@ class _ScanDiseaseRepository extends GraphqlRepository {
   Future<DiseaseScanModel?> scanDisease(
       List<String> images, {required String type,required String treeType}) async {
     var result = await this.mutate("""
-     createDiseaseScan(images:${jsonEncode(images)},type:"$type",plantId:"$treeType"){
+     createDiseaseScan(images:${jsonEncode(images)},type:$type,plantId:"$treeType"){
               id
               createdAt
               images
               results{
                 className
                 id
-                percent
-                image
+                accuracy
+                imageUrl
                 disease{
                         id
                         code
