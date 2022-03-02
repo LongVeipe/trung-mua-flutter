@@ -18,7 +18,7 @@ class CameraSearchController extends GetxController {
   CameraSearchController() {
     scanDiseaseCurrent = null;
     var result = Get.find<AuthController>().listPlant;
-    typePlant = removeUnicode(result.first.name??"");
+    typePlant = removeUnicode(result.first.id??"");
   }
 
   scanDisease(

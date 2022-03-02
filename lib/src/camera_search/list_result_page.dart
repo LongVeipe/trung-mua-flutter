@@ -170,7 +170,7 @@ class _ListResultPageState extends State<ListResultPage> {
             ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: WidgetImageNetWork(
-                  url: data.image,
+                  url: data.imageUrl,
                   width: 80,
                   height: 80,
                   fit: BoxFit.cover,

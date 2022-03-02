@@ -362,7 +362,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                                           viewTypeAI.showSelectedType(context,
                                               (value) async {
                                             Get.find<CameraSearchController>()
-                                                .typePlant = value[1].type;
+                                                .typePlant = value[1].id;
                                             Get.find<CameraSearchController>()
                                                 .type = value[0].type;
 

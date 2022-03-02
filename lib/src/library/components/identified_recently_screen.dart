@@ -85,13 +85,13 @@ class _IdentifiedRecentlyScreenState extends State<IdentifiedRecentlyScreen> {
                               vertical: 5),
                           child: ItemTinTucComponent(
                             image: controller.loadMoreItems.value[index]
-                                .results?[index2].image,
+                                .results?[index2].imageUrl,
                             onTap: () {
                               print(
                                   "IdentifiedRecentlyScreen----- ${jsonEncode(
                                       controller.loadMoreItems
                                           .value[index].results?[index2]
-                                          .image)}");
+                                          .imageUrl)}");
                               Get.to(DetailResultPage(
                                 diseaseModel: controller.loadMoreItems
                                     .value[index].results?[index2]

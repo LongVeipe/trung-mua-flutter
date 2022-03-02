@@ -9,14 +9,14 @@ class InitSessionModel {
   String? createdTime;
   String? createdUserID;
   String? className;
-  num? percent;
+  num? accuracy;
 
   InitSessionModel(
       {this.id,
       this.createdTime,
       this.createdUserID,
       this.className,
-      this.percent});
+      this.accuracy});
 
   InitSessionModel.fromJson(dynamic json) {
     id = json['id'];
@@ -28,14 +28,14 @@ class InitSessionModel {
     // createdTime = json['createdTime'];
     createdUserID = json['createdUserID'];
     className = json['className'];
-    percent = json['percent'];
+    accuracy = json['accuracy'];
   }
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
     map['id'] = id;
     map['className'] = className;
-    map['percent'] = percent;
+    map['accuracy'] = accuracy;
     return map;
   }
 }

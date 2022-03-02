@@ -1,4 +1,4 @@
-package trungmua.miagri.vn
+package trungmua.mismart.ai
 
 import io.flutter.embedding.android.FlutterActivity
 
