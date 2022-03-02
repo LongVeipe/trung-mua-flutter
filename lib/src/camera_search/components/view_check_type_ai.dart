@@ -14,13 +14,13 @@ class _ViewTypeAI {
   int valDisease = 0;
   int valPlant = 2;
   List<TypeClass> _type = [
-    TypeClass(name: "Sâu hại", type: "Worm", groupName: "Sâu bệnh"),
-    TypeClass(name: "", type: "", groupName: "")
+    TypeClass(name: "Sâu hại", type: "Worm", groupName: "Sâu bệnh", id: ""),
+    TypeClass(name: "", type: "", groupName: "", id: "")
   ];
 
   List<TypeClass> listData = [
-    TypeClass(name: "Sâu hại", type: "Worm", groupName: "Sâu bệnh"),
-    TypeClass(name: "Dịch bệnh", type: "Disease", groupName: "Sâu bệnh"),
+    TypeClass(name: "Sâu hại", type: "Worm", groupName: "Sâu bệnh", id: ""),
+    TypeClass(name: "Dịch bệnh", type: "Disease", groupName: "Sâu bệnh", id :""),
   ];
 
   _ViewTypeAI() {
@@ -32,13 +32,16 @@ class _ViewTypeAI {
     _type[1] = TypeClass(
         name: result.first.name ?? "",
         type: removeUnicode(result.first.name ?? ""),
-        groupName: "Cây trồng");
+        groupName: "Cây trồng",
+        id: result.first.id ?? "",
+    );
 
     for (var value in result) {
       listData.add(TypeClass(
           name: value.name ?? "",
           type: removeUnicode(value.name ?? ""),
-          groupName: "Cây trồng"));
+          groupName: "Cây trồng", id: value.id ?? ""),
+      );
     }
   }
 
@@ -172,11 +175,13 @@ class TypeClass {
   final String name;
   final String type;
   final String groupName;
+  final String id;
 
   TypeClass({
     required this.name,
     required this.type,
     required this.groupName,
+    required this.id,
   });
 
   Map<String, dynamic> toJson() {
