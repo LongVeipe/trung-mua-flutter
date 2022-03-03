@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ConfigFirebaseMessages.initEvent(context);
-    Get.put(AuthController());
+    AuthController authController = Get.put(AuthController());
     ConfigFirebaseAuth.intent.auth.authStateChanges().listen((user) {
       if (user != null) {
         print("authStateChanges---${user.phoneNumber}");
@@ -61,7 +61,22 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      // home: FutureBuilder(
+      //   future: authController.userGetMe(),
+      //   builder: (BuildContext context, AsyncSnapshot snapshot ) {
+      //     if (snapshot.connectionState == ConnectionState.waiting)
+      //       return Container(
+      //         decoration: BoxDecoration(
+      //           color: Colors.white
+      //         ),
+      //       );
+      //     if (authController.userCurrent.id == null)
+      //       return LoginPage();
+      //     return checkFirst();
+      //   }
+      // ),
       home: checkFirst(),
+      // home: checkFirst(),
       // home: NavigatorBottomPage(),
     );
   }
@@ -69,9 +84,25 @@ class MyApp extends StatelessWidget {
   Widget checkFirst() {
     String? xToken = SPref.instance.get(AppKey.xToken);
     String? staffId = SPref.instance.get(AppKey.staffId);
+    AuthController authController = Get.find<AuthController>();
     if (xToken != null && xToken.isNotEmpty) {
       if (staffId != null && staffId.isNotEmpty)
-        return NavigatorBottomPage();
+        return FutureBuilder(
+            future: authController.userGetMe(),
+            builder: (BuildContext context, AsyncSnapshot snapshot ) {
+              if (snapshot.connectionState == ConnectionState.waiting)
+                return Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white
+                  ),
+                );
+              if (authController.userCurrent.id == null) {
+                return LoginPage();
+              }
+              authController.init();
+              return NavigatorBottomPage();
+            }
+        );
       // return FlashScreenPage();
       return InformationPersonalPage(checkFirst: true,);
       // return NavigatorBottomPage();
