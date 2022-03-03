@@ -29,12 +29,12 @@ class AuthController extends GetxController {
   List<PlantModel> listPlant = [];
 
   AuthController() {
-    init();
+    // init();
   }
 
   init() async {
-    String? xToken = SPref.instance.get(AppKey.xToken);
-    if (xToken != null && xToken.isNotEmpty) userGetMe();
+    // String? xToken = SPref.instance.get(AppKey.xToken);
+    // if (xToken != null && xToken.isNotEmpty) userGetMe();
     getInfoDevice();
     if(listPlant.length==0){
       getPlants();
