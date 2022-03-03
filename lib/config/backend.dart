@@ -4,7 +4,7 @@
 // const BACKEND_HTTP = "https://giaohang.shop/graphql";
 // const BACKEND_WSS = "wss://giaohang.shop/graphql";
 
-const BACKEND_TOKEN_HEADER = "x-tokenn";
+const BACKEND_TOKEN_HEADER = "x-token";
 
 class BackendHost{
   static String BACKEND_HTTP = "https://trungmua.mcom.app/graphql";
