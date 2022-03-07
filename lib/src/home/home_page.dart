@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    Get.delete<HomeController>();
     Get.put(HomeController());
   }
 
@@ -75,7 +76,7 @@ class _HomePageState extends State<HomePage> {
       builder: (homeController) {
         print("====================================================");
         print(homeController.listDocumentGroup.length);
-
+        homeController.count += 1;
         return SizedBox.expand(
           child: Stack(
             children: [
