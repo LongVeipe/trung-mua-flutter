@@ -16,7 +16,6 @@ class HomeController extends GetxController {
   List<DocumentGroupModel> listDocumentGroup = [];
   WeatherController? weatherController;
   TinTucController? tinTucController = TinTucController();
-  int count = 0;
 
   bool showLoadingInit = true;
 
