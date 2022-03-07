@@ -15,7 +15,7 @@ import 'weather_controller.dart';
 class HomeController extends GetxController {
   List<DocumentGroupModel> listDocumentGroup = [];
   WeatherController? weatherController;
-  TinTucController? tinTucController;
+  TinTucController? tinTucController = TinTucController();
 
   bool showLoadingInit = true;
 
@@ -56,7 +56,7 @@ class HomeController extends GetxController {
     //   } catch (error) {
     //     print("HomeController------ $error");
     //   }
-      tinTucController = Get.put(TinTucController());
+    //   tinTucController = Get.put(TinTucController());
     } catch (error) {
       print("HomeController------ $error");
     }

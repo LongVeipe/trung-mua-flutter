@@ -32,7 +32,7 @@ class _NavigatorBottomPageState extends State<NavigatorBottomPage> {
     // TODO: implement initState
     super.initState();
 
-    Get.put(TinTucController());
+    // Get.put(TinTucController());
   }
 
   @override
@@ -139,7 +139,7 @@ class _NavigatorBottomPageState extends State<NavigatorBottomPage> {
       Container(
         alignment: Alignment.center,
         child: Text(
-          "tin trức",
+          "tin tức",
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
       ),
