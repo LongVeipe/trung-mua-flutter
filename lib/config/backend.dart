@@ -7,7 +7,7 @@
 const BACKEND_TOKEN_HEADER = "x-token";
 
 class BackendHost{
-  static String BACKEND_HTTP = "https://trungmua.mcom.app/graphql";
-  static String BACKEND_WSS = "wss://trungmua.mcom.app/graphql";
+  static String BACKEND_HTTP = "https://app-trung-mua.mismart.ai/graphql";
+  static String BACKEND_WSS = "wss://app-trung-mua.mismart.ai/graphql";
 }
 

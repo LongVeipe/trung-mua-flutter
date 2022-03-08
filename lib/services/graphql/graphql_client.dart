@@ -9,7 +9,6 @@ final HttpLink _httpLink = HttpLink(BackendHost.BACKEND_HTTP);
 final AuthLink _authLink = AuthLink(
     getToken: () async {
       final token = await SPref.instance.get(AppKey.xToken);
-      // print("token api- $token");
       return token;
     },
     headerKey: BACKEND_TOKEN_HEADER);
