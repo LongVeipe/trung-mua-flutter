@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:121797388043:android:7fefe5f3a10fdc16b1240e",
+        "mobilesdk_app_id": "1:121797388043:android:897e51e2d5f5dbe5b1240e",
         "android_client_info": {
-          "package_name": "trungmua.mismart.ai"
+          "package_name": "trungmua.miagri.vn"
         }
       },
       "oauth_client": [
@@ -29,6 +29,13 @@
             {
               "client_id": "121797388043-mt987036buab33pgf2f927harkc3lfo9.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "121797388043-tcq0aad9qm3m1f7052c7h1m1rk81e45j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "trungmua.mismart.ai"
+              }
             }
           ]
         }
