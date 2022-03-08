@@ -1,10 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:imgur/imgur.dart' as ig;
 import 'package:viettel_app/config/app_key.dart';
 import 'package:viettel_app/config/backend.dart';
 import 'package:viettel_app/services/spref.dart';
@@ -97,8 +95,6 @@ showSelectImage(
 Future uploadImage(String path, {Function(String?)? onUpdateImage}) async {
   final uri = 'https://app-trung-mua.mismart.ai/api/file/upload-no-save';
   String xToken = SPref.instance.get(AppKey.xToken);
-  final imgurService =
-      ig.Imgur(ig.Authentication.fromClientId('317d13ba79b0825')).image;
   if (path.isNotEmpty) {
     var request = http.MultipartRequest('POST', Uri.parse(uri));
     request.files.add(
