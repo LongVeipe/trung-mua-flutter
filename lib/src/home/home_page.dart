@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    Get.delete<HomeController>();
     Get.put(HomeController());
   }
 
@@ -75,7 +76,6 @@ class _HomePageState extends State<HomePage> {
       builder: (homeController) {
         print("====================================================");
         print(homeController.listDocumentGroup.length);
-
         return SizedBox.expand(
           child: Stack(
             children: [
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                                                 "Phone number = ${SPref.instance.get(AppKey.phoneNumber)}");
                                             String? url;
                                             if (index == 1)
-                                              url = "https://miagri.vn";
+                                              url = "https://mismart.ai";
                                             else if (index == 2) {
                                               // if (Platform.isAndroid) {
                                               //   url =
@@ -196,7 +196,7 @@ class _HomePageState extends State<HomePage> {
                                               }
                                             } else if (index == 0)
                                               url =
-                                                  "https://miagri.vn/${SPref.instance.get(AppKey.phoneNumber)}";
+                                                  "https://mismart.ai/${SPref.instance.get(AppKey.phoneNumber)}";
 
                                             if (await canLaunch(
                                                 url.toString())) {

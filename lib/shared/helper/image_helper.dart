@@ -1,10 +1,13 @@
-import 'dart:io';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:imgur/imgur.dart' as ig;
+import 'package:viettel_app/config/app_key.dart';
+import 'package:viettel_app/config/backend.dart';
+import 'package:viettel_app/services/spref.dart';
 import 'package:viettel_app/shared/helper/dialogs.dart';
+import 'package:http/http.dart' as http;
 
 import '../../config/theme/size-constant.dart';
 import '../../config/theme/style-constant.dart';
@@ -21,14 +24,13 @@ showSelectImage(
               onTap: () async {
                 Get.back();
                 WaitingDialog.show(context);
-                final XFile? pickedFile =
-                    await _picker.pickImage(imageQuality: 50,source: ImageSource.gallery);
+                final XFile? pickedFile = await _picker.pickImage(
+                    imageQuality: 50, source: ImageSource.gallery);
                 print("gallery path - ${pickedFile?.path}");
-                updateImage(pickedFile?.path ?? "", onUpdateImage: (value) {
+                uploadImage(pickedFile?.path ?? "", onUpdateImage: (value) {
                   print("gallery - $value");
                   WaitingDialog.turnOff();
                   if (value != null) callBack.call(value);
-
                 });
                 // print("gallery - ${pickedFile?.path}");
               },
@@ -54,11 +56,11 @@ showSelectImage(
                 Get.back();
                 WaitingDialog.show(context);
 
-                final XFile? pickedFile =
-                await _picker.pickImage(imageQuality: 50,source: ImageSource.camera);
+                final XFile? pickedFile = await _picker.pickImage(
+                    imageQuality: 50, source: ImageSource.camera);
 
                 print("gallery path - ${pickedFile?.path}");
-                updateImage(pickedFile?.path ?? "", onUpdateImage: (value) {
+                uploadImage(pickedFile?.path ?? "", onUpdateImage: (value) {
                   print("gallery - $value");
                   WaitingDialog.turnOff();
                   if (value != null) callBack.call(value);
@@ -90,15 +92,23 @@ showSelectImage(
       backgroundColor: Colors.white);
 }
 
-//
-Future updateImage(String path, {Function(String?)? onUpdateImage}) async {
-  final imgurService =
-      ig.Imgur(ig.Authentication.fromClientId('317d13ba79b0825')).image;
+Future uploadImage(String path, {Function(String?)? onUpdateImage}) async {
+  final uri = 'https://app-trung-mua.mismart.ai/api/file/upload-no-save';
+  String xToken = SPref.instance.get(AppKey.xToken);
   if (path.isNotEmpty) {
-    return imgurService.uploadImage(imageFile: File(path)).then((value) {
-      if (value.link != null && onUpdateImage != null) {
-        onUpdateImage.call(value.link);
-      }
+    var request = http.MultipartRequest('POST', Uri.parse(uri));
+    request.files.add(
+      await http.MultipartFile.fromPath('upload', path)
+    );
+    request.headers.clear();
+    request.headers.addAll({
+      "Accept": "application/json",
+      "$BACKEND_TOKEN_HEADER": xToken,
     });
+    var response = await request.send();
+    var responsed = await http.Response.fromStream(response);
+    final responseData = json.decode(responsed.body);
+    if(responseData["link"] != null)
+      onUpdateImage!.call(responseData["link"]);
   }
 }

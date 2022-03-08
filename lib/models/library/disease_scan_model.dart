@@ -59,22 +59,22 @@ class DiseaseScanModel {
 class Results {
   String? className;
   String? id;
-  num? percent;
-  String? image;
+  num? accuracy;
+  String? imageUrl;
   DiseaseModel? disease;
 
   Results({
     this.className,
     this.id,
-    this.percent,
-    this.image,
+    this.accuracy,
+    this.imageUrl,
     this.disease});
 
   Results.fromJson(dynamic json) {
     className = json['className'];
     id = json['id']?.toString();
-    percent = json['percent'];
-    image = json['image'];
+    accuracy = json['accuracy'];
+    imageUrl = json['imageUrl'];
     disease = json['disease'] != null ? DiseaseModel.fromJson(json['disease']) : null;
   }
 
@@ -82,8 +82,8 @@ class Results {
     var map = <String, dynamic>{};
     map['className'] = className;
     map['id'] = id;
-    map['percent'] = percent;
-    map['image'] = image;
+    map['accuracy'] = accuracy;
+    map['imageUrl'] = imageUrl;
     if (disease != null) {
       map['disease'] = disease?.toJson();
     }

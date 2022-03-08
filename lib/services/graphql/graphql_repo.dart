@@ -1,6 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:gql/ast.dart';
+import 'package:get/get.dart';
 import 'package:gql/language.dart';
 import 'package:graphql/client.dart';
+import 'package:viettel_app/export.dart';
+import 'package:viettel_app/src/login/login_page.dart';
 
 import 'graphql_client.dart';
 
@@ -59,9 +63,16 @@ class GraphqlRepository {
     return parseString(tmp);
   }
 
-  handleException(QueryResult result,{bool showDataResult=false}) {
+  handleException(QueryResult result, {bool showDataResult = false}) {
     print("handleException: ${result.exception}");
-    if(showDataResult==true)
-    print("result.data: ${result.data}");
+    if (showDataResult == true) print("result.data: ${result.data}");
+    if (result.exception != null) {
+      for (final err in result.exception!.graphqlErrors) {
+        if(err.message == "Chưa xác thực") {
+          showSnackBar(title: "Thông báo", body: err.message,backgroundColor: Colors.red);
+          Get.offAll(LoginPage());
+        }
+      }
+    }
   }
 }

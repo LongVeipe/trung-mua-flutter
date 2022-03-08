@@ -19,8 +19,8 @@ class HistoryDiseaseScanController
       results{
         className
         id
-        percent
-        image
+        accuracy
+        imageUrl
         disease{
             id
             code

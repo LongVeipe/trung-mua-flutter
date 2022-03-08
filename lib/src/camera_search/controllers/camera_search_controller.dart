@@ -18,7 +18,7 @@ class CameraSearchController extends GetxController {
   CameraSearchController() {
     scanDiseaseCurrent = null;
     var result = Get.find<AuthController>().listPlant;
-    typePlant = removeUnicode(result.first.name??"");
+    typePlant = removeUnicode(result.first.id??"");
   }
 
   scanDisease(
@@ -27,7 +27,7 @@ class CameraSearchController extends GetxController {
     WaitingDialog.showTimer(context, message: "AI đang nhận diện", count: 30);
     try {
       for (var item in images) {
-        await updateImage(item, onUpdateImage: (value) {
+        await uploadImage(item, onUpdateImage: (value) {
           print("gallery - $value");
           if (value != null) {
             imageNetWorks.add(value);
