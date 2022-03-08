@@ -27,7 +27,7 @@ class CameraSearchController extends GetxController {
     WaitingDialog.showTimer(context, message: "AI đang nhận diện", count: 30);
     try {
       for (var item in images) {
-        await updateImage(item, onUpdateImage: (value) {
+        await uploadImage(item, onUpdateImage: (value) {
           print("gallery - $value");
           if (value != null) {
             imageNetWorks.add(value);
