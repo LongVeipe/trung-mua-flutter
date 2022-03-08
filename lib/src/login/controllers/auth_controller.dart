@@ -29,7 +29,7 @@ class AuthController extends GetxController {
   List<PlantModel> listPlant = [];
 
   AuthController() {
-    // init();
+    init();
   }
 
   init() async {
