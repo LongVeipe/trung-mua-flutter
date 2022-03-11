@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "121797388043-e4l8tfvd9vsqamaq29uultk1knqv7ou0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "trungmua.miagri.vn",
+            "certificate_hash": "fbc7dc9e9dc24bb99a5b160ab993367ea3eb79e0"
+          }
+        },
+        {
           "client_id": "121797388043-mt987036buab33pgf2f927harkc3lfo9.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -31,10 +39,10 @@
               "client_type": 3
             },
             {
-              "client_id": "121797388043-tcq0aad9qm3m1f7052c7h1m1rk81e45j.apps.googleusercontent.com",
+              "client_id": "121797388043-p63ig7tj1uj9rkhdndvua0jks5cpt8ug.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "trungmua.mismart.ai"
+                "bundle_id": "trungmua.miagri.vn"
               }
             }
           ]
