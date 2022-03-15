@@ -1,48 +1,41 @@
 {
   "project_info": {
-    "project_number": "121797388043",
-    "project_id": "app-trung-mua-c6213",
-    "storage_bucket": "app-trung-mua-c6213.appspot.com"
+    "project_number": "312709397249",
+    "project_id": "app-trung-mua-21f9a",
+    "storage_bucket": "app-trung-mua-21f9a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:121797388043:android:897e51e2d5f5dbe5b1240e",
+        "mobilesdk_app_id": "1:312709397249:android:537b658ab99b74c4aab900",
         "android_client_info": {
           "package_name": "trungmua.miagri.vn"
         }
       },
       "oauth_client": [
         {
-          "client_id": "121797388043-e4l8tfvd9vsqamaq29uultk1knqv7ou0.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "trungmua.miagri.vn",
-            "certificate_hash": "fbc7dc9e9dc24bb99a5b160ab993367ea3eb79e0"
-          }
-        },
-        {
-          "client_id": "121797388043-mt987036buab33pgf2f927harkc3lfo9.apps.googleusercontent.com",
+          "client_id": "312709397249-uv1kvmemd2i04ua3pagqm6o94gurn1k6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCoR564xxOG-EPc5qi1KNtnc7ORvjoEarw"
+          "current_key": "AIzaSyBHOgCZObjFYvD1x1_OOpmhYukxLvGwK2E"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "121797388043-mt987036buab33pgf2f927harkc3lfo9.apps.googleusercontent.com",
+              "client_id": "312709397249-uv1kvmemd2i04ua3pagqm6o94gurn1k6.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "121797388043-p63ig7tj1uj9rkhdndvua0jks5cpt8ug.apps.googleusercontent.com",
+              "client_id": "312709397249-0ks0tooavk5p6c4c6asv3qt65dtnrik7.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "trungmua.miagri.vn"
+                "bundle_id": "trungmua.miagri.vn",
+                "app_store_id": "1597471446"
               }
             }
           ]
