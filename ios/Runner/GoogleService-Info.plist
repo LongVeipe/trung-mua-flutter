@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>121797388043-p63ig7tj1uj9rkhdndvua0jks5cpt8ug.apps.googleusercontent.com</string>
+	<string>312709397249-0ks0tooavk5p6c4c6asv3qt65dtnrik7.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.121797388043-p63ig7tj1uj9rkhdndvua0jks5cpt8ug</string>
+	<string>com.googleusercontent.apps.312709397249-0ks0tooavk5p6c4c6asv3qt65dtnrik7</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDL-PxzPR1SwfxopvGrKMg_RBWJ2Nvjsx0</string>
+	<string>AIzaSyCX0EyF1boKnKV4u1e741ZhRxsGa9wHtdI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>121797388043</string>
+	<string>312709397249</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>trungmua.miagri.vn</string>
 	<key>PROJECT_ID</key>
-	<string>app-trung-mua-c6213</string>
+	<string>app-trung-mua-21f9a</string>
 	<key>STORAGE_BUCKET</key>
-	<string>app-trung-mua-c6213.appspot.com</string>
+	<string>app-trung-mua-21f9a.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:121797388043:ios:950d49f19b49a414b1240e</string>
+	<string>1:312709397249:ios:d5f228dde517b30faab900</string>
 </dict>
 </plist>
