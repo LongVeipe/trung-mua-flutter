@@ -19,8 +19,10 @@ import '../../services/spref.dart';
 import 'notify_event.dart';
 
 class ConfigFirebaseMessages {
+  // static String _vapidKey =
+  //     "AAAAkuKrbRY:APA91bE6jnGFvHNej60zufyumNI8MnHcjqHPVukMjs_vlVxtya-W2c4WvrGZqHINm7svbfmWsvnptyr74qOo6NVVsROrBR2nAyYeuC54EIC4coYiOxdoggY4nKZGbDUmhGc8-kMF5nxV";
   static String _vapidKey =
-      "AAAAkuKrbRY:APA91bE6jnGFvHNej60zufyumNI8MnHcjqHPVukMjs_vlVxtya-W2c4WvrGZqHINm7svbfmWsvnptyr74qOo6NVVsROrBR2nAyYeuC54EIC4coYiOxdoggY4nKZGbDUmhGc8-kMF5nxV";
+      "AAAASM7uuwE:APA91bGTG05sDzIlu91OQhKT6LUdg-F7BesGoYV-D1_7MqoT49oGfJ2HfblZwCIGVs7rxr8g6B06aB-5CtHvwEI21Jq0ibAI0-JwO-9lbRwwAT9dDE3ztf3rBjvqtEf8Qhcb1c54CRAK";
 
   static init() async {
     PermissionHelper.init();
