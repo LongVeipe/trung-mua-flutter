@@ -8,6 +8,8 @@ PODS:
     - Flutter
   - downloads_path_provider (0.0.1):
     - Flutter
+  - external_app_launcher (0.0.1):
+    - Flutter
   - Firebase/Analytics (8.0.0):
     - Firebase/Core
   - Firebase/Auth (8.0.0):
@@ -204,6 +206,7 @@ DEPENDENCIES:
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - device_info (from `.symlinks/plugins/device_info/ios`)
   - downloads_path_provider (from `.symlinks/plugins/downloads_path_provider/ios`)
+  - external_app_launcher (from `.symlinks/plugins/external_app_launcher/ios`)
   - Firebase/Analytics
   - Firebase/Messaging
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
@@ -261,6 +264,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/device_info/ios"
   downloads_path_provider:
     :path: ".symlinks/plugins/downloads_path_provider/ios"
+  external_app_launcher:
+    :path: ".symlinks/plugins/external_app_launcher/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
@@ -315,6 +320,7 @@ SPEC CHECKSUMS:
   connectivity_plus: 5f0eb61093bec56935f21a1699dd2758bc895587
   device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
   downloads_path_provider: fe0d06888d4b8c055a59edbc2f51f03e63cb0e28
+  external_app_launcher: ad55ac844aa21f2d2197d7cec58ff0d0dc40bbc0
   Firebase: 73c3e3b216ec1ecbc54d2ffdd4670c65c749edb1
   firebase_auth: 1e633b05c508081a0876749432ac742075b3f4f3
   firebase_core: cda81ae37eda6df2bc2d16027fda527987c4bd33
