@@ -1,17 +1,10 @@
-import 'dart:convert';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:viettel_app/config/theme/style-constant.dart';
-import 'package:viettel_app/export.dart';
 import 'package:viettel_app/main.dart';
-import 'package:viettel_app/src/camera_search/controllers/in_app_purchase_controller.dart';
 import 'package:viettel_app/src/camera_search/user_manua_cameral_page.dart';
-
 import 'components/take_picture_screen.dart';
 import 'controllers/camera_search_controller.dart';
-import 'controllers/consumable_store.dart';
 
 bool firstOpenCamera = true;
 

@@ -180,7 +180,7 @@ class _HomePageState extends State<HomePage> {
                                                           "https://play.google.com/store/apps/details?id=mcom.app.miagrinv");
                                                     } else {
                                                       return await launch(
-                                                          "https://apps.apple.com/us/app/miagri-nh%C3%A2n-vi%C3%AAn/id1591231114");
+                                                          "https://apps.apple.com/vn/app/miagri-qu%E1%BA%A3n-l%C3%BD/id1607440248");
                                                     }
                                                   }
                                                 });
