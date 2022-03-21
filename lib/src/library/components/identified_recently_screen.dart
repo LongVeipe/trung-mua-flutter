@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:viettel_app/src/camera_search/detail_result_page.dart';
 import 'package:viettel_app/src/components/item_tintuc_component.dart';
@@ -9,6 +8,7 @@ import 'package:viettel_app/src/home/components/widget_icon_text.dart';
 import 'package:viettel_app/src/library/controllers/history_disease_scan_controller.dart';
 
 import '../../../export.dart';
+import '../results_list_page.dart';
 
 class IdentifiedRecentlyScreen extends StatefulWidget {
   const IdentifiedRecentlyScreen({Key? key}) : super(key: key);
@@ -79,10 +79,11 @@ class _IdentifiedRecentlyScreenState extends State<IdentifiedRecentlyScreen> {
                         onTap: () {
                           print(
                               "IdentifiedRecentlyScreen----- ${jsonEncode(controller.loadMoreItems.value[index].results?[0].imageUrl)}");
-                          Get.to(DetailResultPage(
-                            diseaseModel: controller
-                                .loadMoreItems.value[index].results?[0].disease,
-                          ));
+                          // Get.to(DetailResultPage(
+                          //   diseaseModel: controller
+                          //       .loadMoreItems.value[index].results?[0].disease,
+                          // ));
+                          Get.to(() => ResultsListPage(results: controller.loadMoreItems.value[index].results));
                         },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +98,7 @@ class _IdentifiedRecentlyScreenState extends State<IdentifiedRecentlyScreen> {
                                   controller.loadMoreItems.value[index]
                                           .results?[index2].disease?.name ??
                                       "Chưa được cập nhật",
-                                  style: StyleConst.boldStyle(),
+                                  style: StyleConst.boldStyle(fontSize: titleSize),
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 3,
                                 ),

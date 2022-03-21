@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:viettel_app/config/theme/assets-constant.dart';
+import 'package:viettel_app/config/theme/color-constant.dart';
 import 'package:viettel_app/config/theme/style-constant.dart';
 import 'package:viettel_app/src/camera_search/camera_search_page.dart';
 import 'package:viettel_app/src/camera_search/components/take_picture_screen.dart';
@@ -79,7 +80,7 @@ class CustomAnimatedBottomBar extends StatelessWidget {
                       width: 57,
                       height: 57,
                       decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: ColorConst.primaryColor,
                           borderRadius: BorderRadius.circular(100)),
                       child: Center(
                           child: ImageIcon(
