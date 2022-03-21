@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
+import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -127,8 +127,6 @@ class _HomePageState extends State<HomePage> {
                                       homeController.listDocumentGroup.length,
                                       (index) {
                                     return category(
-                                        // assetsImage: AssetsConst
-                                        //     .iconHomeQuyTrinhPhongTru,
                                         assetsImage: homeController
                                             .listDocumentGroup[index].icon,
                                         title: homeController
@@ -136,16 +134,6 @@ class _HomePageState extends State<HomePage> {
                                                 .name ??
                                             "",
                                         onTap: () async {
-                                          // Get.to(QuyTrinhScreen(
-                                          //   title: homeController
-                                          //           .listDocumentGroup[index]
-                                          //           .name ??
-                                          //       "",
-                                          //   groupCode: homeController
-                                          //           .listDocumentGroup[index]
-                                          //           .code ??
-                                          //       "",
-                                          // ));
                                           if (index == 3) {
                                             Get.to(QuyTrinhScreen(
                                               title: homeController
@@ -161,23 +149,25 @@ class _HomePageState extends State<HomePage> {
                                             print(
                                                 "Phone number = ${SPref.instance.get(AppKey.phoneNumber)}");
                                             String? url;
-                                            if (index == 1)
-                                              url = "https://mismart.ai";
-                                            else if (index == 2) {
-                                              // if (Platform.isAndroid) {
-                                              //   url =
-                                              //       "scheme://deeplinking.miagri/";
-                                              // } else {
+                                            if (index == 1) {
+                                              return await LaunchApp.openApp(
+                                                  androidPackageName:
+                                                      "mcom.app.miagrishop",
+                                                  iosUrlScheme:
+                                                      "app-1-312709397249-ios-d5f228dde517b30faab900://",
+                                                  appStoreLink:
+                                                      "https://apps.apple.com/vn/app/miagri/id1611335505");
+                                            } else if (index == 2) {
                                               url =
                                                   "scheme://deeplinking.miagri/";
-                                              // }
                                               try {
-                                                // print(await canLaunch(url));
-                                                return await launch(url).then((value) async {
-                                                  if(value==false){
+                                                print(await canLaunch(url));
+                                                return await launch(url)
+                                                    .then((value) async {
+                                                  if (value == false) {
                                                     if (Platform.isAndroid) {
                                                       return await launch(
-                                                          "https://play.google.com/store/apps/details?id=mcom.app.miagrinv");
+                                                          "https://play.google.com/store/apps/details?id=mcom.miagri.manage");
                                                     } else {
                                                       return await launch(
                                                           "https://apps.apple.com/vn/app/miagri-qu%E1%BA%A3n-l%C3%BD/id1607440248");
@@ -188,15 +178,15 @@ class _HomePageState extends State<HomePage> {
                                                 printLog("error: $error");
                                                 if (Platform.isAndroid) {
                                                   return await launch(
-                                                      "https://play.google.com/store/apps/details?id=mcom.app.miagrinv");
+                                                      "https://play.google.com/store/apps/details?id=mcom.miagri.manage");
                                                 } else {
                                                   return await launch(
-                                                      "https://apps.apple.com/us/app/miagri-nh%C3%A2n-vi%C3%AAn/id1591231114");
+                                                      "https://apps.apple.com/vn/app/miagri-qu%E1%BA%A3n-l%C3%BD/id1607440248");
                                                 }
                                               }
                                             } else if (index == 0)
                                               url =
-                                                  "https://mismart.ai/${SPref.instance.get(AppKey.phoneNumber)}";
+                                                  "https://miagri.vn/${SPref.instance.get(AppKey.phoneNumber)}";
 
                                             if (await canLaunch(
                                                 url.toString())) {
