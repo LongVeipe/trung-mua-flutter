@@ -21,7 +21,7 @@ class ResultsListPage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Column(children: [
-          WidgetAppbar(title: "Kết Quả"),
+          WidgetAppbar(title: "Danh Sách Kết Quả"),
           Expanded(
               child: SingleChildScrollView(
             child: (results?.length ?? 0) > 0
@@ -69,7 +69,7 @@ class ResultsListPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    data.className ?? "",
+                    data.disease?.name ?? "",
                     style: StyleConst.boldStyle(),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 3,
@@ -77,12 +77,12 @@ class ResultsListPage extends StatelessWidget {
                   SizedBox(
                     height: 5,
                   ),
-                  WidgetIconText(
-                    iconAsset: AssetsConst.iconTime,
-                    text: "${data.disease?.createdAt ?? ""}",
-                    size: miniSize,
-                    style: StyleConst.regularStyle(fontSize: miniSize),
-                  ),
+                  // WidgetIconText(
+                  //   iconAsset: AssetsConst.iconTime,
+                  //   text: "${data.disease?.createdAt ?? ""}",
+                  //   size: miniSize,
+                  //   style: StyleConst.regularStyle(fontSize: miniSize),
+                  // ),
                   SizedBox(
                     height: 5,
                   ),

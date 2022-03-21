@@ -127,8 +127,6 @@ class _HomePageState extends State<HomePage> {
                                       homeController.listDocumentGroup.length,
                                       (index) {
                                     return category(
-                                        // assetsImage: AssetsConst
-                                        //     .iconHomeQuyTrinhPhongTru,
                                         assetsImage: homeController
                                             .listDocumentGroup[index].icon,
                                         title: homeController
@@ -136,16 +134,6 @@ class _HomePageState extends State<HomePage> {
                                                 .name ??
                                             "",
                                         onTap: () async {
-                                          // Get.to(QuyTrinhScreen(
-                                          //   title: homeController
-                                          //           .listDocumentGroup[index]
-                                          //           .name ??
-                                          //       "",
-                                          //   groupCode: homeController
-                                          //           .listDocumentGroup[index]
-                                          //           .code ??
-                                          //       "",
-                                          // ));
                                           if (index == 3) {
                                             Get.to(QuyTrinhScreen(
                                               title: homeController
