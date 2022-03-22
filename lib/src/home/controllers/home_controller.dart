@@ -32,7 +32,7 @@ class HomeController extends GetxController {
     }
     listDocumentGroup.add(DocumentGroupModel(icon: "assets/images/my_store.png", name: "Cửa hàng của tôi"));
     listDocumentGroup.add(DocumentGroupModel(icon: "assets/images/nearby_store.png", name: "Cửa hàng gần tôi"));
-    listDocumentGroup.add(DocumentGroupModel(icon: "assets/images/inspect_origin.png", name: "Quản lý cửa hàng"));
+    listDocumentGroup.add(DocumentGroupModel(icon: "assets/images/store_management.png", name: "Quản lý cửa hàng"));
     listDocumentGroup.add(DocumentGroupModel(icon: "assets/images/knowledge.png", name: "Kiến thức"));
     //   listDocumentGroup = await categoryRepository.getAllDocumentGroup();
     //   try {
