@@ -12,7 +12,7 @@ void showSnackBar(
     body,
     snackPosition: SnackPosition.TOP,
     backgroundColor:
-        (backgroundColor?.withOpacity(.8)) ?? Colors.green.withOpacity(.8),
+        (backgroundColor?.withOpacity(.8)) ?? ColorConst.secondaryColor.withOpacity(.8),
     colorText: color ?? ColorConst.white,
     duration: Duration(seconds: 4),
   );

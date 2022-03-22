@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -108,6 +109,9 @@ class _ViewTypeAI {
     }
     return Column(
       children: List.generate(listGroup.length, (index) {
+        if(listGroup[index]["groupName"] == "Sâu bệnh") {
+          return SizedBox.shrink();
+        }
         var data = (listGroup[index]["listWidget"] as List)
             .map<Widget>((e) => e)
             .toList();
