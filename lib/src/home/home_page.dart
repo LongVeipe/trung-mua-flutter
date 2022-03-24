@@ -150,16 +150,47 @@ class _HomePageState extends State<HomePage> {
                                                 "Phone number = ${SPref.instance.get(AppKey.phoneNumber)}");
                                             String? url;
                                             if (index == 1) {
-                                              return await LaunchApp.openApp(
-                                                  androidPackageName:
-                                                      "mcom.app.miagrishop",
-                                                  iosUrlScheme:
-                                                      "app-1-312709397249-ios-d5f228dde517b30faab900://",
-                                                  appStoreLink:
-                                                      "https://apps.apple.com/vn/app/miagri/id1611335505");
-                                            } else if (index == 2) {
+                                              // return await LaunchApp.openApp(
+                                              //     androidPackageName:
+                                              //         "mcom.app.miagrishop",
+                                              //     iosUrlScheme:
+                                              //         "scheme://deeplinking.miagrishop/",
+                                              //     appStoreLink:
+                                              //         "https://apps.apple.com/vn/app/miagri/id1611335505");
                                               url =
-                                                  "scheme://deeplinking.miagri/";
+                                              "scheme-miagri-shop://deeplinking.miagrishop/";
+                                              try {
+                                                print(await canLaunch(url));
+                                                return await launch(url)
+                                                    .then((value) async {
+                                                  if (value == false) {
+                                                    if (Platform.isAndroid) {
+                                                      return await launch(
+                                                          "https://play.google.com/store/apps/details?id=mcom.app.miagrishop");
+                                                    } else {
+                                                      return await launch(
+                                                          "https://apps.apple.com/vn/app/miagri/id1611335505");
+                                                    }
+                                                  }
+                                                });
+                                              } catch (error) {
+                                                printLog("error: $error");
+                                                if (Platform.isAndroid) {
+                                                  return await launch(
+                                                      "https://play.google.com/store/apps/details?id=mcom.app.miagrishop");
+                                                } else {
+                                                  return await launch(
+                                                      "https://apps.apple.com/vn/app/miagri/id1611335505");
+                                                }
+                                              }
+                                            } else if (index == 2) {
+                                              // return await LaunchApp.openApp(
+                                              //   androidPackageName: "mcom.miagri.manage",
+                                              //   iosUrlScheme: "scheme://",
+                                              //   appStoreLink: "https://apps.apple.com/vn/app/miagri-qu%E1%BA%A3n-l%C3%BD/id1607440248"
+                                              // );
+                                              url =
+                                                  "scheme-miagri-manage://deeplinking.miagri/";
                                               try {
                                                 print(await canLaunch(url));
                                                 return await launch(url)
