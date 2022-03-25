@@ -6,10 +6,10 @@ import 'package:viettel_app/services/graphql/crud_repo.dart';
 import 'package:viettel_app/services/graphql/graphql_list_load_more_provider.dart';
 import 'package:viettel_app/shared/helper/dialogs.dart';
 
-class SearchBVTVController extends GraphqlListLoadMoreProvider<BvtvModel> {
+class SearchContactsController extends GraphqlListLoadMoreProvider<BvtvModel> {
   static SearchBVTVProvider _searchBVTVProvider = SearchBVTVProvider();
 
-  SearchBVTVController({query})
+  SearchContactsController({query})
       : super(service: _searchBVTVProvider, query: query, fragment: """
         id
         name
@@ -24,7 +24,7 @@ class SearchBVTVController extends GraphqlListLoadMoreProvider<BvtvModel> {
   """);
 
 
-  searchBVTV({required String provinceId, required BuildContext context}){
+  searchContacts({required String provinceId, required BuildContext context}){
     QueryInput queryInput=QueryInput(
       filter: {"place.provinceId": provinceId}
     );

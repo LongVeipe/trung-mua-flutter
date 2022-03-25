@@ -7,7 +7,7 @@ import 'package:viettel_app/models/user/place_model.dart';
 /// logo : "https://maivangthuduc.com/wp-content/uploads/2017/12/20-C%C3%82Y-XANH.jpg"
 /// phone : null
 
-class BvtvModel {
+class ContactModel {
   String? id;
   String? name;
   PlaceModel? place;
@@ -15,7 +15,7 @@ class BvtvModel {
   String? logo;
   String? phone;
 
-  BvtvModel({
+  ContactModel({
       this.id, 
       this.name, 
       this.place, 
@@ -23,7 +23,7 @@ class BvtvModel {
       this.logo, 
       this.phone});
 
-  BvtvModel.fromJson(dynamic json) {
+  ContactModel.fromJson(dynamic json) {
     id = json['id'];
     name = json['name'];
     place = json['place'] != null ? PlaceModel.fromJson(json['place']) : null;
