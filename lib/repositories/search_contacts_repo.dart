@@ -1,23 +1,36 @@
-import 'package:viettel_app/models/search_bvtv/bvtv_model.dart';
+import 'package:viettel_app/models/search_contacts/contact_model.dart';
 import 'package:viettel_app/services/graphql/graphql_repo.dart';
 
-final searchBVTVRepository = new _SearchBVTVRepository();
+final searchContactsRepository = new _SearchContactsRepository();
 
-class _SearchBVTVRepository extends GraphqlRepository {
-  Future<List<ContactModel>> searchBVTV(String provinceId) async {
+class _SearchContactsRepository extends GraphqlRepository {
+  Future<List<ContactModel>> searchContacts(String provinceId) async {
     var result = await this.query("""
-     getAllHospital(q:\$q){
+     getAllUsefulContacts(q:\$q){
       data{
-        id
-        name
-        place{
-          fullAddress
-          provinceId
-          location
-        }
-        intro
-        logo
-        phone
+       id,
+          name,
+          phone,
+          email,
+          hospitals{
+            id,
+            name,
+            phone,
+            email,
+            type,
+            place{
+              street,
+              provinceId
+              province,
+              districtId,
+              district,
+              ward,
+              wardId,
+              fullAddress,
+            },
+            logo,
+            images,
+          }
       }
     }
     """, variables: {

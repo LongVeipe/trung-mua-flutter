@@ -14,7 +14,11 @@ class InformationController extends GetxController {
   List<FormComboBox> listDataWard = [];
 
   InformationController() {
-    getProvince();
+    // getProvince();
+  }
+
+  getContacts() async {
+
   }
 
   getProvince() async {

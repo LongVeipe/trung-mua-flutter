@@ -1,32 +1,52 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:viettel_app/models/search_bvtv/bvtv_model.dart';
-import 'package:viettel_app/repositories/search_bvtv_repo.dart';
+import 'package:viettel_app/models/search_contacts/contact_model.dart';
+import 'package:viettel_app/repositories/search_contacts_repo.dart';
 import 'package:viettel_app/services/graphql/crud_repo.dart';
 import 'package:viettel_app/services/graphql/graphql_list_load_more_provider.dart';
 import 'package:viettel_app/shared/helper/dialogs.dart';
 
-class SearchContactsController extends GraphqlListLoadMoreProvider<BvtvModel> {
-  static SearchBVTVProvider _searchBVTVProvider = SearchBVTVProvider();
+class SearchContactsController
+    extends GraphqlListLoadMoreProvider<ContactModel> {
+  static SearchContactsProvider _searchContactsProvider =
+      SearchContactsProvider();
+  TextEditingController textEditingController = TextEditingController(text: "");
 
   SearchContactsController({query})
-      : super(service: _searchBVTVProvider, query: query, fragment: """
-        id
-        name
-        place{
-          fullAddress
-          provinceId
-          location
-        }
-        intro
-        logo
-        phone
-  """);
+      : super(service: _searchContactsProvider, query: query, fragment: """
+          id,
+          name,
+          phone,
+          email,
+          hospitals{
+            id,
+            name,
+            phone,
+            type,
+            place{
+              street,
+              provinceId
+              province,
+              districtId,
+              district,
+              ward,
+              wardId,
+              fullAddress,
+            },
+            logo,
+            images,
+          }
+        """);
 
+  searchProvinces({required String provinceId, required BuildContext context}) {
+    QueryInput queryInput =
+        QueryInput(filter: {"place.provinceId": provinceId});
+    this.loadAll(query: queryInput);
+  }
 
-  searchContacts({required String provinceId, required BuildContext context}){
-    QueryInput queryInput=QueryInput(
-      filter: {"place.provinceId": provinceId}
+  searchContacts({required String name}) {
+    QueryInput queryInput = QueryInput(
+      search: name,
     );
     this.loadAll(query: queryInput);
   }
@@ -46,11 +66,12 @@ class SearchContactsController extends GraphqlListLoadMoreProvider<BvtvModel> {
 // }
 }
 
-class SearchBVTVProvider extends CrudRepository<BvtvModel> {
-  SearchBVTVProvider():super(apiName: "Hospital");
+class SearchContactsProvider extends CrudRepository<ContactModel> {
+  SearchContactsProvider() : super(apiName: "UsefulContact");
+
   @override
-  BvtvModel fromJson(Map<String, dynamic> json) {
+  ContactModel fromJson(Map<String, dynamic> json) {
     // TODO: implement fromJson
-    return BvtvModel.fromJson(json);
+    return ContactModel.fromJson(json);
   }
 }

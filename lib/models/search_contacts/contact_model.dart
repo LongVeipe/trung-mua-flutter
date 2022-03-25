@@ -1,3 +1,4 @@
+import 'package:viettel_app/models/search_contacts/hospital_modal.dart';
 import 'package:viettel_app/models/user/place_model.dart';
 
 /// id : "6114fa070d1fc9368ef77fc7"
@@ -10,25 +11,25 @@ import 'package:viettel_app/models/user/place_model.dart';
 class ContactModel {
   String? id;
   String? name;
-  PlaceModel? place;
-  String? intro;
-  String? logo;
+  List<HospitalModel>? hospitals;
   String? phone;
+  String? email;
 
-  ContactModel({
-      this.id, 
-      this.name, 
-      this.place, 
-      this.intro, 
-      this.logo, 
-      this.phone});
+  ContactModel({this.id, this.name, this.hospitals, this.email, this.phone});
 
   ContactModel.fromJson(dynamic json) {
     id = json['id'];
     name = json['name'];
-    place = json['place'] != null ? PlaceModel.fromJson(json['place']) : null;
-    intro = json['intro'];
-    logo = json['logo'];
+    if (json['hospitals'] != null) {
+      hospitals = [];
+      json["hospitals"].forEach((v){
+        hospitals?.add(HospitalModel.fromJson(v));
+      });
+      // json['hospitals'].forEach((v){
+      //   hospitals?.add(HospitalModel.fromJson(v));
+      // });
+    }
+    email = json['email'];
     phone = json['phone'];
   }
 
@@ -36,13 +37,13 @@ class ContactModel {
     var map = <String, dynamic>{};
     map['id'] = id;
     map['name'] = name;
-    if (place != null) {
-      map['place'] = place?.toJson();
+    if (hospitals != null) {
+      hospitals?.toList().forEach((element) {
+        map[hospitals].add(element.toJson());
+      });
     }
-    map['intro'] = intro;
-    map['logo'] = logo;
+    map['email'] = email;
     map['phone'] = phone;
     return map;
   }
-
 }
