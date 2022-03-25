@@ -77,25 +77,6 @@ class _UsefulContactsState extends State<UsefulContacts> {
                           _searchContactsController.textEditingController.text);
                 },
               ),
-              // Padding(
-              //   padding:
-              //       const EdgeInsets.symmetric(horizontal: 64, vertical: 35),
-              //   child: WidgetButton(
-              //     text: "Tìm kiếm",
-              //     textColor: Colors.white,
-              //     paddingBtnHeight: 12,
-              //     radius: 25,
-              //     onTap: () async {
-              //       if (itemProvince != null) {
-              //         await _searchContactsController.searchProvinces(
-              //             provinceId: itemProvince?.id ?? "", context: context);
-              //         setState(() {
-              //           showResult = true;
-              //         });
-              //       }
-              //     },
-              //   ),
-              // ),
               Visibility(
                 visible: showResult,
                 child:
