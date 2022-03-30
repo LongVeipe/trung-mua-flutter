@@ -20,7 +20,7 @@ class StyleConst {
           color: color ?? ColorConst.textPrimary,
           fontFamily: fontBold,
           package: package,
-          height: height??1.1,
+          height: height??1.3,
           fontWeight: fontWeight ?? FontWeight.normal,
           fontStyle: fontStyle ?? FontStyle.normal,
           fontSize: fontSize ?? defaultSize,

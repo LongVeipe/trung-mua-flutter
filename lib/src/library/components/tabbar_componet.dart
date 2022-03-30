@@ -24,7 +24,7 @@ class _TabBarComponentState extends State<TabBarComponent> {
     listTabBar.add(ModelTabBarComponent(
         title: "Thư viện", index: 1, callBack: callBack));
     listTabBar.add(ModelTabBarComponent(
-        title: "Địa chỉ\nTrạm Điểm DVNN", index: 2, callBack: callBack));
+        title: "Danh bạ\nHữu ích", index: 2, callBack: callBack));
   }
   void callBack(int value){
     setState(() {

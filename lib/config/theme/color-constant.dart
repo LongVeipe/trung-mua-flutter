@@ -12,6 +12,7 @@ class ColorConst {
   // static const Color primaryColorGradient2 = Color(0xFF0D57EF);
   static const Color secondaryColor = Color(0xFF97999C);
   static const Color textPrimary = Color(0xFF3C4043);
+  static const Color textPrimaryDark = Colors.white;
   static const Color red = Color(0xFFff5242);
   static const Color grey = Color(0xFFA8A8A8);
   static const Color greyLight = Color(0xFFF6F6F8);
