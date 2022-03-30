@@ -10,10 +10,12 @@ class SearchContactsController
     extends GraphqlListLoadMoreProvider<ContactModel> {
   static SearchContactsProvider _searchContactsProvider =
       SearchContactsProvider();
+  static QueryInput _queryInput = QueryInput(
+      order: {"name": 1});
   TextEditingController textEditingController = TextEditingController(text: "");
 
   SearchContactsController({query})
-      : super(service: _searchContactsProvider, query: query, fragment: """
+      : super(service: _searchContactsProvider, query: query ?? _queryInput, fragment: """
           id,
           name,
           phone,
@@ -47,6 +49,7 @@ class SearchContactsController
   searchContacts({required String name}) {
     QueryInput queryInput = QueryInput(
       search: name,
+      order: {"name": 1},
     );
     this.loadAll(query: queryInput);
   }
@@ -67,7 +70,7 @@ class SearchContactsController
 }
 
 class SearchContactsProvider extends CrudRepository<ContactModel> {
-  SearchContactsProvider() : super(apiName: "UsefulContact");
+  SearchContactsProvider() : super(apiName: "UsefulContact", isPaging: false);
 
   @override
   ContactModel fromJson(Map<String, dynamic> json) {

@@ -29,7 +29,7 @@ void showBottomSnackbar({
 }) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     content: Text(content),
-    duration: Duration(seconds: duration ?? 2),
-    backgroundColor: backgroundColor?? ColorConst.secondaryColor.withOpacity(0.8),
+    duration: Duration(seconds: duration ?? 1),
+    backgroundColor: backgroundColor?? ColorConst.secondaryColor,
   ));
 }

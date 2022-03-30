@@ -1,3 +1,4 @@
+import 'package:azlistview/azlistview.dart';
 import 'package:viettel_app/models/search_contacts/hospital_modal.dart';
 import 'package:viettel_app/models/user/place_model.dart';
 
@@ -8,7 +9,7 @@ import 'package:viettel_app/models/user/place_model.dart';
 /// logo : "https://maivangthuduc.com/wp-content/uploads/2017/12/20-C%C3%82Y-XANH.jpg"
 /// phone : null
 
-class ContactModel {
+class ContactModel extends ISuspensionBean{
   String? id;
   String? name;
   List<HospitalModel>? hospitals;
@@ -45,5 +46,11 @@ class ContactModel {
     map['email'] = email;
     map['phone'] = phone;
     return map;
+  }
+
+  @override
+  String getSuspensionTag() {
+    return this.name?[0].toUpperCase() ?? "A";
+    throw UnimplementedError();
   }
 }

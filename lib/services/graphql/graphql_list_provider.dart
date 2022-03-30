@@ -29,6 +29,9 @@ abstract class GraphqlListProvider<T> extends GetxController {
         // : QueryInput.fromJson({...this.query.toJson(), ...query.toJson()});
         : QueryInput.fromJson(mapData(this.query.toJson(), query.toJson()));
 
+    if(this.service.isPaging == false){
+      this.query = QueryInput.fromJson(transQueryToWithoutPaging(this.query.toJson()));
+    }
     print("json query loadAll: ${this.query.toJson()}");
 
     return service
@@ -79,5 +82,12 @@ abstract class GraphqlListProvider<T> extends GetxController {
     object = map1;
     // print("mapData----- $object");
     return object;
+  }
+
+  transQueryToWithoutPaging(Map<String, dynamic> map){
+    map["limit"] = null;
+    map["offset"] = null;
+
+    return map;
   }
 }

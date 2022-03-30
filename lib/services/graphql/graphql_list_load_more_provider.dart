@@ -17,13 +17,13 @@ class GraphqlListLoadMoreProvider<T> extends GraphqlListProvider<T> {
     this.lastItem=false;
   }
 
-  Future loadMore() async {
+  Future loadMore({QueryInput? queryInput}) async {
     // print("length - ${this.loadMoreItems.value}");
     // print("lastItem - ${this.lastItem}");
     // print("this.pagination.value.page  ${this.pagination.value.page }");
     if (lastItem == true) return;
     var items = await this.loadAll(
-        query: QueryInput(page: (this.pagination.value.page ?? 0) + 1));
+        query: QueryInput(page: (this.pagination.value.page ?? 0) + 1, order: queryInput?.order, limit: queryInput?.limit));
     // print("items.length ${items.length}");
     if (items.length < (this.pagination.value.limit ?? defaultLimit)) {
       lastItem = true;
@@ -37,7 +37,7 @@ class GraphqlListLoadMoreProvider<T> extends GraphqlListProvider<T> {
   Future<List<T>> loadAll({QueryInput? query}) {
     return super.loadAll(query: query).then((res) {
       if (this.pagination.value.page == 1) {
-        if(res.length<(this.pagination.value.limit??defaultLimit)){
+        if(res.length<(this.pagination.value.limit??defaultLimit) || service.isPaging == false){
           // print("res.total - $total - ${res.length}");
           lastItem=true;
         }

@@ -66,13 +66,16 @@ abstract class CrudRepository<T> extends GraphqlRepository {
   String? apiName;
   String? shortFragment;
   String? fullFragment;
+  bool? isPaging = true;
 
   T fromJson(Map<String, dynamic> json);
 
-  CrudRepository({apiName, shortFragment, fullFragment}) {
+  CrudRepository({apiName, shortFragment, fullFragment, isPaging}) {
     this.apiName = apiName ?? this.apiName;
     this.shortFragment = shortFragment ?? this.shortFragment;
     this.fullFragment = fullFragment ?? this.fullFragment;
+    if(isPaging != null)
+      this.isPaging = isPaging;
   }
 
   Future<PageData<T>> getAll(
