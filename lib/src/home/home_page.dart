@@ -150,15 +150,8 @@ class _HomePageState extends State<HomePage> {
                                                 "Phone number = ${SPref.instance.get(AppKey.phoneNumber)}");
                                             String? url;
                                             if (index == 1) {
-                                              // return await LaunchApp.openApp(
-                                              //     androidPackageName:
-                                              //         "mcom.app.miagrishop",
-                                              //     iosUrlScheme:
-                                              //         "scheme://deeplinking.miagrishop/",
-                                              //     appStoreLink:
-                                              //         "https://apps.apple.com/vn/app/miagri/id1611335505");
                                               url =
-                                              "scheme-miagri-shop://deeplinking.miagrishop/";
+                                                  "scheme-miagri-shop://deeplinking.miagrishop/";
                                               try {
                                                 print(await canLaunch(url));
                                                 return await launch(url)
@@ -184,11 +177,6 @@ class _HomePageState extends State<HomePage> {
                                                 }
                                               }
                                             } else if (index == 2) {
-                                              // return await LaunchApp.openApp(
-                                              //   androidPackageName: "mcom.miagri.manage",
-                                              //   iosUrlScheme: "scheme://",
-                                              //   appStoreLink: "https://apps.apple.com/vn/app/miagri-qu%E1%BA%A3n-l%C3%BD/id1607440248"
-                                              // );
                                               url =
                                                   "scheme-miagri-manage://deeplinking.miagri/";
                                               try {
@@ -236,168 +224,6 @@ class _HomePageState extends State<HomePage> {
                                   }),
                                 ),
                               ),
-                              // Padding(
-                              //   padding: const EdgeInsets.only(
-                              //       top: 12, left: 20, bottom: 16, right: 20),
-                              //   child: HomeWeather(
-                              //     weatherController:
-                              //         homeController.weatherController,
-                              //   ),
-                              // ),
-
-                              // GetBuilder<HistoryDiseaseScanController>(
-                              //   builder: (historyController) {
-                              //     if (historyController
-                              //             .loadMoreItems.value.length ==
-                              //         0) return SizedBox();
-                              //     return Column(
-                              //       children: [
-                              //         Padding(
-                              //           padding: const EdgeInsets.only(
-                              //               top: 19,
-                              //               left: 20,
-                              //               right: 20,
-                              //               bottom: 12),
-                              //           child: Row(
-                              //             mainAxisAlignment:
-                              //                 MainAxisAlignment.spaceBetween,
-                              //             children: [
-                              //               Text(
-                              //                 "Nhận diện gần đây",
-                              //                 style: StyleConst.boldStyle(
-                              //                     fontSize: titleSize),
-                              //               ),
-                              //               GestureDetector(
-                              //                 onTap: () {
-                              //                   Get.to(LibraryPage());
-                              //                 },
-                              //                 child: Row(
-                              //                   children: [
-                              //                     Text(
-                              //                       "Xem tất cả",
-                              //                       style:
-                              //                           StyleConst.regularStyle(
-                              //                               color: ColorConst
-                              //                                   .primaryColor),
-                              //                     ),
-                              //                     Icon(
-                              //                       Icons.navigate_next,
-                              //                       color:
-                              //                           ColorConst.primaryColor,
-                              //                     )
-                              //                   ],
-                              //                 ),
-                              //               ),
-                              //             ],
-                              //           ),
-                              //         ),
-                              //         SingleChildScrollView(
-                              //           scrollDirection: Axis.horizontal,
-                              //           child: Row(
-                              //             children: List.generate(
-                              //               historyController
-                              //                   .loadMoreItems.value.length,
-                              //               (index) => Row(
-                              //                 children: List.generate(
-                              //                     historyController
-                              //                             .loadMoreItems
-                              //                             .value[index]
-                              //                             .results
-                              //                             ?.length ??
-                              //                         0,
-                              //                     (index2) => Container(
-                              //                           width: MediaQuery.of(
-                              //                                       context)
-                              //                                   .size
-                              //                                   .width /
-                              //                               1.3,
-                              //                           decoration: BoxDecoration(
-                              //                               borderRadius:
-                              //                                   BorderRadius
-                              //                                       .circular(
-                              //                                           10),
-                              //                               color:
-                              //                                   Colors.white),
-                              //                           margin: EdgeInsets.only(
-                              //                               left: 16),
-                              //                           padding:
-                              //                               EdgeInsets.all(10),
-                              //                           child:
-                              //                               ItemTinTucComponent(
-                              //                             image:
-                              //                                 historyController
-                              //                                     .loadMoreItems
-                              //                                     .value[index]
-                              //                                     .results?[
-                              //                                         index2]
-                              //                                     .image,
-                              //                             onTap: () {
-                              //                               Get.to(
-                              //                                   DetailResultPage(
-                              //                                 diseaseModel:
-                              //                                     historyController
-                              //                                         .loadMoreItems
-                              //                                         .value[
-                              //                                             index]
-                              //                                         .results?[
-                              //                                             index2]
-                              //                                         .disease,
-                              //                                 // id: historyController
-                              //                                 //         .loadMoreItems
-                              //                                 //         .value[
-                              //                                 //             index]
-                              //                                 //         .results?[
-                              //                                 //             index2]
-                              //                                 //         .id ??
-                              //                                 //     "",
-                              //                               ));
-                              //                             },
-                              //                             child: Column(
-                              //                               crossAxisAlignment:
-                              //                                   CrossAxisAlignment
-                              //                                       .start,
-                              //                               children: [
-                              //                                 Text(
-                              //                                   historyController
-                              //                                           .loadMoreItems
-                              //                                           .value[
-                              //                                               index]
-                              //                                           .results?[
-                              //                                               index2]
-                              //                                           .disease?.name ??
-                              //                                       "",
-                              //                                   style: StyleConst
-                              //                                       .boldStyle(),
-                              //                                   maxLines: 3,
-                              //                                   overflow: TextOverflow.ellipsis,
-                              //                                 ),
-                              //                                 SizedBox(height: 5,),
-                              //                                 WidgetIconText(
-                              //                                   iconAsset: AssetsConst.iconTime,
-                              //                                   text: "${  historyController
-                              //                                       .loadMoreItems
-                              //                                       .value[
-                              //                                   index].createdAt??""}",
-                              //                                   size: 12,
-                              //                                   style: StyleConst.regularStyle(fontSize: miniSize),
-                              //                                 ),
-                              //
-                              //
-                              //                               ],
-                              //                             ),
-                              //                           ),
-                              //                         )),
-                              //               ),
-                              //             ),
-                              //           ),
-                              //         ),
-                              //         SizedBox(
-                              //           height: 16,
-                              //         )
-                              //       ],
-                              //     );
-                              //   },
-                              // ),
 
                               ///tin mới
                               GetBuilder<TinTucController>(
@@ -465,7 +291,6 @@ class _HomePageState extends State<HomePage> {
                                               padding:
                                                   const EdgeInsets.all(16.0),
                                               child: ItemTinTucComponent(
-                                                // image: "https://danviet.mediacdn.vn/fckeditor/upload/2018/20180523/images/sau-rieng.jpg",
                                                 image:
                                                     "${tinTucController.loadMoreItems.value[index].featureImage}",
                                                 title:
@@ -535,15 +360,7 @@ class _HomePageState extends State<HomePage> {
               assetsImage,
               height: 30,
               width: 30,
-            ))
-                // child: Center(
-                //   child: ImageIcon(
-                //     AssetImage(assetsImage),
-                //     size: 20,
-                //     color: ColorConst.primaryColor,
-                //   ),
-                // ),
-                ),
+            ))),
             Expanded(
               child: Text(
                 "$title",

@@ -32,14 +32,12 @@ class PhoneNumbersDialog extends StatelessWidget {
               )),
           TextButton(
               onPressed: () async {
-
                 final String uri = "tel://$phoneNumbers";
-                if(await canLaunch(uri))
-                  {
-                    await launch(uri);
-                  }
-                else{
-                  showSnackBar(title: "Thông báo", body: "Không thể mở cuộc gọi");
+                if (await canLaunch(uri)) {
+                  await launch(uri);
+                } else {
+                  showSnackBar(
+                      title: "Thông báo", body: "Không thể mở cuộc gọi");
                   throw 'Could not launch $uri';
                 }
               },
@@ -54,7 +52,8 @@ class PhoneNumbersDialog extends StatelessWidget {
                 if (await canLaunch(uri)) {
                   await launch(uri);
                 } else {
-                  showSnackBar(title: "Thông báo", body: "Không thể mở tin nhắn!!");
+                  showSnackBar(
+                      title: "Thông báo", body: "Không thể mở tin nhắn!!");
                   throw 'Could not launch $uri';
                 }
               },

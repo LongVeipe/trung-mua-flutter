@@ -71,29 +71,6 @@ class _UsefulContactsState extends State<UsefulContacts> {
                         color: ColorConst.primaryColor,
                       )),
                   itemBuilder: (context, index) {
-                    print("aaaa $index");
-                    // if (index == controller.loadMoreItems.value.length) {
-                    //   if (controller.loadMoreItems.value.length >=
-                    //           (controller.pagination.value.limit ?? 10) ||
-                    //       controller.loadMoreItems.value.length == 0) {
-                    //     if (controller.lastItem == true &&
-                    //         controller.loadMoreItems.value.length == 0) {
-                    //       return SearchNoneComponent();
-                    //     }
-                    //     return WidgetLoading(
-                    //       notData: controller.lastItem,
-                    //     );
-                    //   } else {
-                    //     print("controller.lastItem---- ${controller.lastItem}");
-                    //     return WidgetLoading(
-                    //       notData: controller.lastItem,
-                    //     );
-                    //   }
-                    // }
-                    // if (controller.lastItem == false &&
-                    //     controller.loadMoreItems.value.length == 0) {
-                    //   return WidgetLoading();
-                    // }
                     if (index == controller.loadMoreItems.value.length + 1)
                       return WidgetLoading(
                         notData: controller.lastItem,
@@ -147,108 +124,7 @@ class _UsefulContactsState extends State<UsefulContacts> {
                     );
                   });
             },
-          )
-          // child: SingleChildScrollView(
-          //   // physics: const BouncingScrollPhysics(
-          //   //     parent: AlwaysScrollableScrollPhysics()),
-          //   padding: EdgeInsets.only(bottom: 109, top: 10, left: 20, right: 20),
-          //   child: Column(
-          //     crossAxisAlignment: CrossAxisAlignment.start,
-          //     children: [
-          //       Padding(
-          //         padding: const EdgeInsets.symmetric(vertical: 16),
-          //         child: Text(
-          //           "Danh bạ",
-          //           style: StyleConst.boldStyle(),
-          //         ),
-          //       ),
-          //       // GetBuilder<InformationController>(
-          //       //   builder: (controller) => WidgetComboBox(
-          //       //     turnOffValidate: true,
-          //       //     hintText: "Vui lòng chọn danh bạ",
-          //       //     listData: controller.listDataProvince,
-          //       //     itemSelected: itemProvince,
-          //       //     onSelected: (value) {
-          //       //       setState(() {
-          //       //         showResult = false;
-          //       //         itemProvince = value;
-          //       //       });
-          //       //     },
-          //       //   ),
-          //       // ),
-          //       WidgetSearch(
-          //         hintText: "Nhập tên liên lạc",
-          //         controller: _searchContactsController.textEditingController,
-          //         onSubmitted: (value) {
-          //           _searchContactsController.searchContacts(
-          //               name:
-          //                   _searchContactsController.textEditingController.text);
-          //         },
-          //       ),
-          //       Visibility(
-          //         visible: showResult,
-          //         child:
-          //             GetBuilder<SearchContactsController>(builder: (controller) {
-          //           return Column(
-          //               children: List.generate(
-          //                   controller.loadMoreItems.value.length + 1, (index) {
-          //             if (index == controller.loadMoreItems.value.length) {
-          //               if (controller.loadMoreItems.value.length >=
-          //                       (controller.pagination.value.limit ?? 10) ||
-          //                   controller.loadMoreItems.value.length == 0) {
-          //                 if (controller.lastItem == true &&
-          //                     controller.loadMoreItems.value.length == 0) {
-          //                   return SearchNoneComponent();
-          //                 }
-          //                 return WidgetLoading(
-          //                   notData: controller.lastItem,
-          //                 );
-          //               } else {
-          //                 print("controller.lastItem---- ${controller.lastItem}");
-          //                 return WidgetLoading(
-          //                   notData: controller.lastItem,
-          //                 );
-          //               }
-          //             }
-          //             if (controller.lastItem == false &&
-          //                 controller.loadMoreItems.value.length == 0) {
-          //               return WidgetLoading();
-          //             }
-          //
-          //             return Column(
-          //               crossAxisAlignment: CrossAxisAlignment.start,
-          //               children: [
-          //                 SizedBox(
-          //                   height: 16,
-          //                 ),
-          //                 Divider(
-          //                   height: 1,
-          //                   color: ColorConst.grey,
-          //                 ),
-          //                 Padding(
-          //                   padding: const EdgeInsets.symmetric(vertical: 16),
-          //                   child: Text(
-          //                     "${controller.loadMoreItems.value[index].name ?? ""}",
-          //                     style: StyleConst.regularStyle(fontSize: titleSize),
-          //                   ),
-          //                 ),
-          //                 SeparateContactInfo(
-          //                     icon: Icons.phone,
-          //                     title: PHONE_TITLE,
-          //                     info: controller.loadMoreItems.value[index].phone),
-          //                 SeparateContactInfo(
-          //                     icon: Icons.email_rounded,
-          //                     title: EMAIL_TITLE,
-          //                     info: controller.loadMoreItems.value[index].email),
-          //               ],
-          //             );
-          //           }));
-          //         }),
-          //       )
-          //     ],
-          //   ),
-          // ),
-          ),
+          )),
     );
   }
 
