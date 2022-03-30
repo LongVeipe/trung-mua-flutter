@@ -31,8 +31,17 @@ class PhoneNumbersDialog extends StatelessWidget {
                 style: StyleConst.regularStyle(),
               )),
           TextButton(
-              onPressed: () {
-                launch("tel://$phoneNumbers");
+              onPressed: () async {
+
+                final String uri = "tel://$phoneNumbers";
+                if(await canLaunch(uri))
+                  {
+                    await launch(uri);
+                  }
+                else{
+                  showSnackBar(title: "Thông báo", body: "Không thể mở cuộc gọi");
+                  throw 'Could not launch $uri';
+                }
               },
               style: TextButton.styleFrom(primary: ColorConst.primaryColor),
               child: Text(
@@ -45,13 +54,8 @@ class PhoneNumbersDialog extends StatelessWidget {
                 if (await canLaunch(uri)) {
                   await launch(uri);
                 } else {
-                  // iOS
-                  final String uri = 'sms:$phoneNumbers';
-                  if (await canLaunch(uri)) {
-                    await launch(uri);
-                  } else {
-                    throw 'Could not launch $uri';
-                  }
+                  showSnackBar(title: "Thông báo", body: "Không thể mở tin nhắn!!");
+                  throw 'Could not launch $uri';
                 }
               },
               style: TextButton.styleFrom(primary: ColorConst.primaryColor),
