@@ -117,10 +117,10 @@ class _LoginPageState extends State<LoginPage> {
                                     phone: phoneNumber.text,
                                   ));
                                 } else {
-                                  showSnackBar(
-                                      title: "Thông báo",
-                                      body: "Đăng nhập không thành công.",
-                                      backgroundColor: Colors.red);
+                                  // showSnackBar(
+                                  //     title: "Thông báo",
+                                  //     body: "Đăng nhập không thành công.",
+                                  //     backgroundColor: Colors.red);
                                 }
                               });
                             }
