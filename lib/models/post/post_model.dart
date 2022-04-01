@@ -1,3 +1,4 @@
+import 'package:viettel_app/models/post/topic_model.dart';
 import 'package:viettel_app/shared/util_convert/datetime_convert.dart';
 
 /// id : "611e0df9db5b9f38d4550de6"
@@ -14,14 +15,15 @@ import 'package:viettel_app/shared/util_convert/datetime_convert.dart';
 /// ogDescription : "Giá tiêu hôm nay 19/8/2021 ở trong nước duy trì ổn định, áp sát mốc 80.000 đồng/kg. Với đà tăng bền vững như này, giá hồ tiêu sẽ còn bật lên vào cuối năm nay."
 /// seen : true
 
-class TinTucModel {
+class PostsModel {
   String? id;
   String? createdAt;
   String? title;
-  dynamic? excerpt;
+  dynamic excerpt;
+  List<TopicModel>? topics;
   String? slug;
   String? status;
-  dynamic? publishedAt;
+  dynamic publishedAt;
   String? featureImage;
   String? ogImage;
   String? content;
@@ -29,7 +31,7 @@ class TinTucModel {
   String? ogDescription;
   bool? seen;
 
-  TinTucModel({
+  PostsModel({
     this.id,
     this.createdAt,
     this.title,
@@ -41,10 +43,11 @@ class TinTucModel {
     this.ogImage,
     this.content,
     this.ogTitle,
+    this.topics,
     this.ogDescription,
     this.seen});
 
-  TinTucModel.fromJson(dynamic json) {
+  PostsModel.fromJson(dynamic json) {
     id = json['id'];
     // createdAt = json['createdAt'];
     createdAt =json['createdAt']!=null? dateTimeConvertString(
@@ -60,6 +63,12 @@ class TinTucModel {
     ogTitle = json['ogTitle'];
     ogDescription = json['ogDescription'];
     seen = json['seen'];
+    if(json['topics'] != null){
+      topics = [];
+      json['topics'].forEach((topic) => {
+        topics?.add(TopicModel.fromJson(topic))
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -77,6 +86,11 @@ class TinTucModel {
     map['ogTitle'] = ogTitle;
     map['ogDescription'] = ogDescription;
     map['seen'] = seen;
+    if(topics != null){
+      topics?.toList().forEach((element) {
+        map['topics'].add(element.toJson());
+      });
+    }
     return map;
   }
 

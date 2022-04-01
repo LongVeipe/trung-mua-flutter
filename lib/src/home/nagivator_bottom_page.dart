@@ -2,16 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:viettel_app/config/theme/assets-constant.dart';
 import 'package:viettel_app/config/theme/color-constant.dart';
-import 'package:viettel_app/shared/helper/dialogs.dart';
 import 'package:viettel_app/shared/tabbar/bottomnavybar_item.dart';
 import 'package:viettel_app/shared/tabbar/custom_animated_bottombar.dart';
 import 'package:viettel_app/src/feedback/feedback_page.dart';
 import 'package:viettel_app/src/library/library_page.dart';
-import 'package:viettel_app/src/support/controllers/support_controller.dart';
-import 'package:viettel_app/src/support/list_session_page.dart';
-import 'package:viettel_app/src/support/support_page.dart';
-import 'package:viettel_app/src/tintuc/controllers/tintuc_controller.dart';
-import 'package:viettel_app/src/tintuc/list_tintuc_page.dart';
+import 'package:viettel_app/src/post/list_posts_page.dart';
 
 import 'home_page.dart';
 

@@ -2,7 +2,7 @@ import 'package:viettel_app/models/category/district_model.dart';
 import 'package:viettel_app/models/category/document_group_model.dart';
 import 'package:viettel_app/models/category/province_model.dart';
 import 'package:viettel_app/models/category/ward_model.dart';
-import 'package:viettel_app/models/tintuc/topic_model.dart';
+import 'package:viettel_app/models/post/topic_model.dart';
 import 'package:viettel_app/models/user/plant_model.dart';
 import 'package:viettel_app/services/graphql/graphql_repo.dart';
 

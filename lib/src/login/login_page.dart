@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
 
   TextEditingController phoneNumber = TextEditingController();
 
-  bool isChecked=false;
+  bool isChecked = false;
 
   @override
   void initState() {
@@ -53,13 +53,43 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: Text(
-                    "Ứng dụng được phát triển bởi\n"
-                    "Công ty Cổ phần Công nghệ Thông Minh MiSmart\n"
-                    "Giải nhất Viet Soltions 2020 cuộc thi do Bộ Thông tin và Truyền Thông và Viettel tổ chức. ",
-                    style: StyleConst.regularStyle(
-                        height: 1.5, fontSize: miniSize),
+                  // child: Text(
+                  //   "Ứng dụng được phát triển bởi\n"
+                  //   "Công ty Cổ phần Công nghệ Thông Minh MiSmart\n"
+                  //   "Giải nhất Viet Soltions 2020 cuộc thi do Bộ Thông tin và Truyền Thông và Viettel tổ chức. ",
+                  //   style: StyleConst.regularStyle(
+                  //       height: 1.5, fontSize: miniSize),
+                  //   textAlign: TextAlign.center,
+                  // ),
+                  // child: Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.center,
+                  //   children: [
+                  //     Text("Ứng dụng được phát triển bởi"),
+                  //     Text("Công ty Cổ phần Công nghệ Thông Minh MiSmart"),
+                  //     Text("Giải nhất Viet Soltions 2020 cuộc thi do Bộ Thông tin và Truyền Thông và Viettel tổ chức."),
+                  //   ],
+                  // )
+                  child: RichText(
                     textAlign: TextAlign.center,
+                    text: TextSpan(
+                        text: "Ứng dụng được phát triển bởi\n",
+                        style: StyleConst.regularStyle(
+                          height: 1.5,
+                          fontSize: miniSize,
+                        ),
+                        children: [
+                          TextSpan(
+                              text:
+                                  "Công ty Cổ phần Công nghệ Thông Minh MiSmart\n",
+                            style: StyleConst.boldStyle(
+                              height: 1.5,
+                              fontSize: miniSize,
+                            )
+                          ),
+                          TextSpan(
+                              text:
+                                  "Giải nhất Viet Solutions 2020\ncuộc thi do Bộ Thông tin và Truyền thông và Viettel tổ chức."),
+                        ]),
                   ),
                 ),
                 SizedBox(
@@ -101,12 +131,14 @@ class _LoginPageState extends State<LoginPage> {
                         child: WidgetButton(
                           text: "Tiếp theo",
                           textColor: Colors.white,
-                          backgroundColor: phoneNumber.text.isEmpty || isChecked==false
-                              ? ColorConst.grey
-                              : ColorConst.primaryColor,
+                          backgroundColor:
+                              phoneNumber.text.isEmpty || isChecked == false
+                                  ? ColorConst.grey
+                                  : ColorConst.primaryColor,
                           radius: 100,
                           onTap: () async {
-                            if (phoneNumber.text.isNotEmpty && isChecked==true) {
+                            if (phoneNumber.text.isNotEmpty &&
+                                isChecked == true) {
                               WaitingDialog.show(context);
 
                               await ConfigFirebaseAuth.intent.verifyPhoneNumber(
@@ -137,30 +169,29 @@ class _LoginPageState extends State<LoginPage> {
                     Checkbox(
                       checkColor: Colors.white,
                       value: isChecked,
-                       activeColor:  ColorConst.primaryColor,
+                      activeColor: ColorConst.primaryColor,
                       onChanged: (bool? value) {
                         setState(() {
                           isChecked = value!;
                         });
                       },
                     ),
-                    GestureDetector( onTap: (){
-                      showNow(context);
-                    },
-                      child: RichText(text: TextSpan(
-                         children: [
-                           TextSpan(
-                               text: "Tôi đồng ý với ",style: StyleConst.mediumStyle()
-                           ),
-                           TextSpan(
-                             text: "điều khoản sử dụng",style: StyleConst.mediumStyle( color: Colors.green)
-                           )
-                         ]
-                      )),
+                    GestureDetector(
+                      onTap: () {
+                        showNow(context);
+                      },
+                      child: RichText(
+                          text: TextSpan(children: [
+                        TextSpan(
+                            text: "Tôi đồng ý với ",
+                            style: StyleConst.mediumStyle()),
+                        TextSpan(
+                            text: "điều khoản sử dụng",
+                            style: StyleConst.mediumStyle(color: Colors.green))
+                      ])),
                     )
                   ],
                 ),
-
 
                 // SizedBox(height: 120),
                 // Image.asset(

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:viettel_app/src/camera_search/detail_result_page.dart';
-import 'package:viettel_app/src/components/item_tintuc_component.dart';
+import 'package:viettel_app/src/components/item_post_component.dart';
 import 'package:viettel_app/src/home/components/widget_icon_text.dart';
 import 'package:viettel_app/src/library/controllers/history_disease_scan_controller.dart';
 
@@ -73,7 +73,7 @@ class _IdentifiedRecentlyScreenState extends State<IdentifiedRecentlyScreen> {
                     padding: EdgeInsets.all(8),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5),
-                      child: ItemTinTucComponent(
+                      child: ItemPostComponent(
                         image: controller
                             .loadMoreItems.value[index].results?[0].imageUrl,
                         onTap: () {

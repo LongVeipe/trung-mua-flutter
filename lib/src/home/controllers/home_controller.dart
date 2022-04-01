@@ -7,7 +7,7 @@ import 'package:viettel_app/shared/helper/location.dart';
 import 'package:viettel_app/src/library/controllers/history_disease_scan_controller.dart';
 import 'package:viettel_app/src/login/controllers/auth_controller.dart';
 import 'package:viettel_app/src/support/controllers/support_controller.dart';
-import 'package:viettel_app/src/tintuc/controllers/tintuc_controller.dart';
+import 'package:viettel_app/src/post/controllers/post_controller.dart';
 
 import 'quytrinh_controller.dart';
 import 'weather_controller.dart';
@@ -15,7 +15,7 @@ import 'weather_controller.dart';
 class HomeController extends GetxController {
   List<DocumentGroupModel> listDocumentGroup = [];
   WeatherController? weatherController;
-  TinTucController? tinTucController = TinTucController();
+  PostsController? tinTucController = PostsController();
 
   bool showLoadingInit = true;
 

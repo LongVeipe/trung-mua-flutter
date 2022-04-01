@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:viettel_app/config/theme/color-constant.dart';
 import 'package:viettel_app/shared/widget/widget_appbar.dart';
-import 'package:viettel_app/src/components/item_tintuc_component.dart';
-import 'package:viettel_app/src/tintuc/controllers/tintuc_controller.dart';
+import 'package:viettel_app/src/components/item_post_component.dart';
+import 'package:viettel_app/src/post/controllers/post_controller.dart';
 
 import '../../export.dart';
 import 'components/item_topic.dart';
-import 'tintuc_detail_page.dart';
+import 'post_detail_page.dart';
 
 class ListTinTucPage extends StatefulWidget {
   ListTinTucPage({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class ListTinTucPage extends StatefulWidget {
 
 class _ListTinTucPageState extends State<ListTinTucPage> {
   ScrollController scrollController = ScrollController();
-  TinTucController tinTucController = Get.put(TinTucController(), tag: ListTinTucPage.tag);
+  PostsController tinTucController = Get.put(PostsController(), tag: ListTinTucPage.tag);
   @override
   void initState() {
     // TODO: implement initState
@@ -45,7 +45,7 @@ class _ListTinTucPageState extends State<ListTinTucPage> {
     return SizedBox.expand(
       child: Container(
         color: ColorConst.white,
-        child: GetBuilder<TinTucController>(
+        child: GetBuilder<PostsController>(
           tag: ListTinTucPage.tag,
           builder: (controller) {
             if (controller.initialized == false) return SizedBox();
@@ -109,7 +109,7 @@ class _ListTinTucPageState extends State<ListTinTucPage> {
                                         color: ColorConst.backgroundColor,
                                         width: 2))),
                             padding: const EdgeInsets.all(16.0),
-                            child: ItemTinTucComponent(
+                            child: ItemPostComponent(
                               image:
                               "${controller.loadMoreItems.value[index].featureImage}",
                               title:

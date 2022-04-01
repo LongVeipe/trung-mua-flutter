@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:viettel_app/config/theme/color-constant.dart';
 import 'package:viettel_app/config/theme/style-constant.dart';
-import 'package:viettel_app/models/tintuc/topic_model.dart';
+import 'package:viettel_app/models/post/topic_model.dart';
 import 'package:viettel_app/services/graphql/crud_repo.dart';
-import 'package:viettel_app/src/tintuc/controllers/tintuc_controller.dart';
+import 'package:viettel_app/src/post/controllers/post_controller.dart';
 
-import '../list_tintuc_page.dart';
+import '../list_posts_page.dart';
 
 class ItemTopic extends StatefulWidget {
   final TopicModel data;
@@ -18,8 +18,8 @@ class ItemTopic extends StatefulWidget {
 }
 
 class _ItemTopicState extends State<ItemTopic> {
-  final TinTucController _tinTucController =
-      Get.find<TinTucController>(tag: ListTinTucPage.tag);
+  final PostsController _tinTucController =
+      Get.find<PostsController>(tag: ListTinTucPage.tag);
 
   @override
   Widget build(BuildContext context) {

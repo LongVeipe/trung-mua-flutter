@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:viettel_app/src/components/item_tintuc_component.dart';
+import 'package:viettel_app/src/components/item_post_component.dart';
 import 'package:viettel_app/src/seach/components/search_none_componet.dart';
 import 'package:viettel_app/src/seach/controllers/search_controller.dart';
-import 'package:viettel_app/src/tintuc/controllers/tintuc_controller.dart';
-import 'package:viettel_app/src/tintuc/tintuc_detail_page.dart';
+import 'package:viettel_app/src/post/controllers/post_controller.dart';
+import 'package:viettel_app/src/post/post_detail_page.dart';
 
 import '../../../export.dart';
 
@@ -37,7 +37,7 @@ class _TinTucComponentState extends State<TinTucComponent> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: GetBuilder<TinTucController>(
+      child: GetBuilder<PostsController>(
         tag: SearchController.tag,
         builder: (controller) {
           return SingleChildScrollView(
@@ -75,7 +75,7 @@ class _TinTucComponentState extends State<TinTucComponent> {
                             bottom: BorderSide(
                                 color: ColorConst.backgroundColor, width: 2))),
                     padding: const EdgeInsets.all(16.0),
-                    child: ItemTinTucComponent(
+                    child: ItemPostComponent(
                       image: "${controller.loadMoreItems.value[index].featureImage}",
                       title: "${controller.loadMoreItems.value[index].title}",
                       time:

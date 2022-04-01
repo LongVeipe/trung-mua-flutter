@@ -9,7 +9,7 @@ import 'package:viettel_app/shared/widget/widget_appbar.dart';
 import 'package:viettel_app/shared/widget/widget_html.dart';
 import 'package:viettel_app/shared/widget/widget_image_network.dart';
 import 'package:viettel_app/src/home/components/widget_icon_text.dart';
-import 'package:viettel_app/src/tintuc/controllers/tintuc_controller.dart';
+import 'package:viettel_app/src/post/controllers/post_controller.dart';
 
 import '../../export.dart';
 
@@ -19,11 +19,11 @@ class TinTucDetailPage extends StatefulWidget {
   TinTucDetailPage({Key? key, required this.id}) : super(key: key);
 
   static push(BuildContext context, {required String id}) {
-    // Get.to(TinTucDetailPage(
-    //   id: id,
-    // ));
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (_) => TinTucDetailPage(id: id,)));
+    Get.to(TinTucDetailPage(
+      id: id,
+    ));
+    // Navigator.of(context)
+    //     .push(MaterialPageRoute(builder: (_) => TinTucDetailPage(id: id,)));
   }
 
   @override
@@ -37,7 +37,7 @@ class _TinTucDetailPageState extends State<TinTucDetailPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Get.find<TinTucController>().getOnePost(widget.id);
+    Get.find<PostsController>().getOnePost(widget.id);
   }
   final spinKit = SpinKitCircle(
     color: ColorConst.primaryColor,
@@ -45,7 +45,7 @@ class _TinTucDetailPageState extends State<TinTucDetailPage> {
   );
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<TinTucController>(
+    return GetBuilder<PostsController>(
       builder: (controller) {
         if (controller.tinTucDetail == null) {
           return Scaffold(
