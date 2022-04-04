@@ -1,23 +1,23 @@
-import 'package:viettel_app/models/tintuc/tin_tuc_model.dart';
-import 'package:viettel_app/models/tintuc/topic_model.dart';
+import 'package:viettel_app/models/post/post_model.dart';
+import 'package:viettel_app/models/post/topic_model.dart';
 import 'package:viettel_app/repositories/category_repo.dart';
 import 'package:viettel_app/services/graphql/crud_repo.dart';
 import 'package:viettel_app/services/graphql/graphql_list_load_more_provider.dart';
 
 List<TopicModel> listTopic = [];
 
-class TinTucController extends GraphqlListLoadMoreProvider<TinTucModel> {
-  static TinTucProvider _tinTucProvider = TinTucProvider();
+class PostsController extends GraphqlListLoadMoreProvider<PostsModel> {
+  static PostsProvider _postsProvider = PostsProvider();
   static QueryInput _queryInput = QueryInput(
       // filter: {"topicSlugs": topicSlugs},
       order: {"_id": -1, "createdAt": -1});
 
-  TinTucModel? tinTucDetail;
+  PostsModel? postDetail;
   String? topic;
 
-  TinTucController({QueryInput? query})
+  PostsController({QueryInput? query})
       : super(
-            service: _tinTucProvider, query: query ?? _queryInput, fragment: """
+            service: _postsProvider, query: query ?? _queryInput, fragment: """
       id
       createdAt
       title
@@ -31,15 +31,18 @@ class TinTucController extends GraphqlListLoadMoreProvider<TinTucModel> {
       ogTitle
       ogDescription
       seen
+      topics{
+        name
+      }
   """) {
     getTopics();
   }
 
   getOnePost(String id) async {
-    tinTucDetail=null;
+    postDetail=null;
     try{
-      var data = await _tinTucProvider.getOne(id: id, fragment: this.fragment);
-      tinTucDetail = data;
+      var data = await _postsProvider.getOne(id: id, fragment: this.fragment);
+      postDetail = data;
     }catch(error){
       print("getOnePost---error: $error");
     }
@@ -69,12 +72,12 @@ class TinTucController extends GraphqlListLoadMoreProvider<TinTucModel> {
   }
 }
 
-class TinTucProvider extends CrudRepository<TinTucModel> {
-  TinTucProvider() : super(apiName: "Post");
+class PostsProvider extends CrudRepository<PostsModel> {
+  PostsProvider() : super(apiName: "Post");
 
   @override
-  TinTucModel fromJson(Map<String, dynamic> json) {
+  PostsModel fromJson(Map<String, dynamic> json) {
     // TODO: implement fromJson
-    return TinTucModel.fromJson(json);
+    return PostsModel.fromJson(json);
   }
 }

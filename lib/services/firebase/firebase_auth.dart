@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:viettel_app/export.dart';
@@ -7,12 +6,11 @@ class ConfigFirebaseAuth {
   FirebaseAuth auth = FirebaseAuth.instance;
 
   static String _verificationId = "";
-  static int? _resendToken=1;
+  static int? _resendToken = 1;
 
   int timeOutSeconds = 120;
 
   static ConfigFirebaseAuth get intent => ConfigFirebaseAuth();
-
 
   verifyPhoneNumber(String phone, Function(FirebaseAuthResult) callBack) async {
     print(phone);
@@ -26,23 +24,34 @@ class ConfigFirebaseAuth {
           print("verificationCompleted-----${phoneAuthCredential.smsCode}");
         },
         verificationFailed: (FirebaseAuthException authException) {
-          if (authException.code == 'quotaExceeded') {
-            callBack.call(FirebaseAuthResult(
-                status: AuthStatus.QuotaExceeded, msg: authException.message));
-          } else {
-            callBack.call(FirebaseAuthResult(
-                status: AuthStatus.Fail, msg: authException.message));
+          switch (authException.code) {
+            case "invalid-phone-number":
+              callBack.call(FirebaseAuthResult(
+                  status: AuthStatus.Fail, msg: authException.message));
+              showSnackBar(
+                  title: "Lỗi",
+                  body: "Số điện thoại không chính xác",
+                  backgroundColor: ColorConst.red);
+              break;
+            case "quotaExceeded":
+              callBack.call(FirebaseAuthResult(
+                  status: AuthStatus.QuotaExceeded,
+                  msg: authException.message));
+              break;
+            default:
+              callBack.call(FirebaseAuthResult(
+                  status: AuthStatus.Fail, msg: authException.message));
           }
           print(authException.message);
 
-          Future.delayed(Duration(seconds: 5), () {
-            showSnackBar(title: "Error", body: authException.message??"",backgroundColor: Colors.red);
-          });
+          // Future.delayed(Duration(seconds: 5), () {
+          //   showSnackBar(title: "Error", body: authException.message??"",backgroundColor: Colors.red);
+          // });
         },
         codeSent: (String verificationId, int? resendToken) async {
           _verificationId = verificationId;
           _resendToken = resendToken;
-            callBack.call(FirebaseAuthResult(status: AuthStatus.CodeSent));
+          callBack.call(FirebaseAuthResult(status: AuthStatus.CodeSent));
         },
         codeAutoRetrievalTimeout: (String verificationId) {
           print("codeAutoRetrievalTimeout-----");

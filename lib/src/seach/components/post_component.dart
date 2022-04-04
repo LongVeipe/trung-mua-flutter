@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:viettel_app/src/components/item_tintuc_component.dart';
+import 'package:viettel_app/src/components/item_post_component.dart';
 import 'package:viettel_app/src/seach/components/search_none_componet.dart';
 import 'package:viettel_app/src/seach/controllers/search_controller.dart';
-import 'package:viettel_app/src/tintuc/controllers/tintuc_controller.dart';
-import 'package:viettel_app/src/tintuc/tintuc_detail_page.dart';
+import 'package:viettel_app/src/post/controllers/post_controller.dart';
+import 'package:viettel_app/src/post/post_detail_page.dart';
 
 import '../../../export.dart';
 
-class TinTucComponent extends StatefulWidget {
-  const TinTucComponent({Key? key}) : super(key: key);
+class PostComponent extends StatefulWidget {
+  const PostComponent({Key? key}) : super(key: key);
 
   @override
-  _TinTucComponentState createState() => _TinTucComponentState();
+  _PostComponentState createState() => _PostComponentState();
 }
 
-class _TinTucComponentState extends State<TinTucComponent> {
+class _PostComponentState extends State<PostComponent> {
   ScrollController scrollController = ScrollController();
 
   SearchController searchController = Get.find<SearchController>();
@@ -27,8 +27,8 @@ class _TinTucComponentState extends State<TinTucComponent> {
     scrollController.addListener(() async {
       if (scrollController.position.pixels ==
           scrollController.position.maxScrollExtent) {
-        if (searchController.tinTucController.lastItem = false) {
-          searchController.tinTucController.loadMore();
+        if (searchController.postsController.lastItem = false) {
+          searchController.postsController.loadMore();
         }
       }
     });
@@ -37,7 +37,7 @@ class _TinTucComponentState extends State<TinTucComponent> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: GetBuilder<TinTucController>(
+      child: GetBuilder<PostsController>(
         tag: SearchController.tag,
         builder: (controller) {
           return SingleChildScrollView(
@@ -75,13 +75,15 @@ class _TinTucComponentState extends State<TinTucComponent> {
                             bottom: BorderSide(
                                 color: ColorConst.backgroundColor, width: 2))),
                     padding: const EdgeInsets.all(16.0),
-                    child: ItemTinTucComponent(
-                      image: "${controller.loadMoreItems.value[index].featureImage}",
+                    child: ItemPostComponent(
+                      image:
+                          "${controller.loadMoreItems.value[index].featureImage}",
                       title: "${controller.loadMoreItems.value[index].title}",
                       time:
                           "${controller.loadMoreItems.value[index].createdAt}",
+                      topics: controller.loadMoreItems.value[index].topics,
                       onTap: () {
-                        TinTucDetailPage.push(context,
+                        PostDetailPage.push(context,
                             id: controller.loadMoreItems.value[index].id ?? "");
                       },
                     ),

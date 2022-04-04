@@ -1,30 +1,23 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:viettel_app/config/app_key.dart';
-import 'package:viettel_app/config/theme/assets-constant.dart';
 import 'package:viettel_app/config/theme/color-constant.dart';
 import 'package:viettel_app/config/theme/size-constant.dart';
 import 'package:viettel_app/config/theme/style-constant.dart';
 import 'package:viettel_app/services/spref.dart';
 import 'package:viettel_app/shared/helper/print_log.dart';
-import 'package:viettel_app/src/camera_search/detail_result_page.dart';
-import 'package:viettel_app/src/components/item_tintuc_component.dart';
-import 'package:viettel_app/src/home/components/home_weather.dart';
-import 'package:viettel_app/src/library/controllers/history_disease_scan_controller.dart';
-import 'package:viettel_app/src/library/library_page.dart';
+import 'package:viettel_app/src/components/item_post_component.dart';
 import 'package:viettel_app/src/login/controllers/auth_controller.dart';
-import 'package:viettel_app/src/tintuc/controllers/tintuc_controller.dart';
-import 'package:viettel_app/src/tintuc/list_tintuc_page.dart';
-import 'package:viettel_app/src/tintuc/tintuc_detail_page.dart';
+import 'package:viettel_app/src/post/controllers/post_controller.dart';
+import 'package:viettel_app/src/post/list_posts_page.dart';
+import 'package:viettel_app/src/post/post_detail_page.dart';
 
 import 'components/home_appbar.dart';
 import 'components/quytrinh_screen.dart';
-import 'components/widget_icon_text.dart';
 import 'controllers/home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -226,9 +219,9 @@ class _HomePageState extends State<HomePage> {
                               ),
 
                               ///tin mới
-                              GetBuilder<TinTucController>(
-                                init: homeController.tinTucController,
-                                builder: (tinTucController) {
+                              GetBuilder<PostsController>(
+                                init: homeController.postsController,
+                                builder: (postController) {
                                   return Column(
                                     children: [
                                       Padding(
@@ -248,7 +241,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             GestureDetector(
                                               onTap: () {
-                                                Get.to(ListTinTucPage());
+                                                Get.to(ListPostsPage());
                                               },
                                               child: Row(
                                                 children: [
@@ -273,13 +266,13 @@ class _HomePageState extends State<HomePage> {
                                       // ItemTinTucComponent(),
                                       Visibility(
                                         visible:
-                                            homeController.tinTucController !=
+                                            homeController.postsController !=
                                                 null,
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: List.generate(
-                                            tinTucController
+                                            postController
                                                 .loadMoreItems.value.length,
                                             (index) => Container(
                                               decoration: BoxDecoration(
@@ -290,16 +283,17 @@ class _HomePageState extends State<HomePage> {
                                                           width: 2))),
                                               padding:
                                                   const EdgeInsets.all(16.0),
-                                              child: ItemTinTucComponent(
+                                              child: ItemPostComponent(
                                                 image:
-                                                    "${tinTucController.loadMoreItems.value[index].featureImage}",
+                                                    "${postController.loadMoreItems.value[index].featureImage}",
                                                 title:
-                                                    "${tinTucController.loadMoreItems.value[index].title}",
+                                                    "${postController.loadMoreItems.value[index].title}",
                                                 time:
-                                                    "${tinTucController.loadMoreItems.value[index].createdAt}",
+                                                    "${postController.loadMoreItems.value[index].createdAt}",
+                                                topics: postController.loadMoreItems.value[index].topics,
                                                 onTap: () {
-                                                  TinTucDetailPage.push(context,
-                                                      id: tinTucController
+                                                  PostDetailPage.push(context,
+                                                      id: postController
                                                               .loadMoreItems
                                                               .value[index]
                                                               .id ??

@@ -10,6 +10,8 @@ import 'package:viettel_app/src/login/controllers/auth_controller.dart';
 
 import '../../export.dart';
 
+
+final int OTP_LENGTH = 6;
 class LoginOTPPage extends StatefulWidget {
   final String phone;
 
@@ -89,10 +91,12 @@ class _LoginOTPPageState extends State<LoginOTPPage> {
                       ),
 
                       WidgetOTPInput(
-                        length: 6,
+                        length: OTP_LENGTH,
                         appContext: context,
                         onChange: (String value) {
-                          stringOTP = value;
+                          setState(() {
+                            stringOTP = value;
+                          });
                         },
                         onSubmit: (String value) {
                           // Get.find<AuthController>()
@@ -105,7 +109,9 @@ class _LoginOTPPageState extends State<LoginOTPPage> {
                             top: 55, right: 64 - 16, left: 64 - 16, bottom: 34),
                         child: WidgetButton(
                           text: "Xác nhận",
+                          isEnable: stringOTP.length == OTP_LENGTH,
                           textColor: Colors.white,
+                          backgroundColor: stringOTP.length == OTP_LENGTH ? ColorConst.primaryColor : ColorConst.secondaryColor,
                           radius: 100,
                           onTap: () async {
                             FocusScope.of(context).requestFocus(FocusNode());

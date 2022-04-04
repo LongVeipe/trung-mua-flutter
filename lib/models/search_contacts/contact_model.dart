@@ -40,7 +40,7 @@ class ContactModel extends ISuspensionBean{
     map['name'] = name;
     if (hospitals != null) {
       hospitals?.toList().forEach((element) {
-        map[hospitals].add(element.toJson());
+        map['hospitals'].add(element.toJson());
       });
     }
     map['email'] = email;

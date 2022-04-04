@@ -5,11 +5,11 @@ import 'package:viettel_app/shared/widget/widget_search.dart';
 import 'package:viettel_app/src/library/components/library_svgh_screen.dart';
 import 'package:viettel_app/src/seach/components/tabbar_component.dart';
 import 'package:viettel_app/src/seach/controllers/search_controller.dart';
-import 'package:viettel_app/src/tintuc/controllers/tintuc_controller.dart';
+import 'package:viettel_app/src/post/controllers/post_controller.dart';
 
 import '../../export.dart';
 import 'components/search_none_componet.dart';
-import 'components/tintuc_component.dart';
+import 'components/post_component.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -54,7 +54,7 @@ class _SearchPageState extends State<SearchPage> {
             Expanded(
               child: TabBarComponent(
                 listScreen: [
-                  TinTucComponent(),
+                  PostComponent(),
                   LibraryScreen(tag: SearchController.tag),
                 ],
               ),

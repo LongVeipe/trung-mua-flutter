@@ -9,18 +9,20 @@ class WidgetButton extends StatelessWidget {
   final Color? textColor;
   final Color? radiusColor;
   final double? radius;
+  bool isEnable;
 
   // final double? height;
   final double? paddingBtnWidth;
   final double? paddingBtnHeight;
 
-  const WidgetButton({
+  WidgetButton({
     Key? key,
     required this.text,
     this.onTap,
     this.backgroundColor,
     this.textColor,
     this.radius,
+    this.isEnable = true,
     // this.height,
     this.paddingBtnWidth,
     this.paddingBtnHeight,
@@ -30,7 +32,7 @@ class WidgetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onTap?.call(),
+      onTap: this.isEnable? () => onTap?.call() : null,
       child: Container(
         // height: height ?? 40,
         padding: EdgeInsets.symmetric(
