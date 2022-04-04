@@ -220,7 +220,7 @@ class _HomePageState extends State<HomePage> {
 
                               ///tin mới
                               GetBuilder<PostsController>(
-                                init: homeController.tinTucController,
+                                init: homeController.postsController,
                                 builder: (postController) {
                                   return Column(
                                     children: [
@@ -241,7 +241,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             GestureDetector(
                                               onTap: () {
-                                                Get.to(ListTinTucPage());
+                                                Get.to(ListPostsPage());
                                               },
                                               child: Row(
                                                 children: [
@@ -266,7 +266,7 @@ class _HomePageState extends State<HomePage> {
                                       // ItemTinTucComponent(),
                                       Visibility(
                                         visible:
-                                            homeController.tinTucController !=
+                                            homeController.postsController !=
                                                 null,
                                         child: Column(
                                           crossAxisAlignment:
@@ -292,7 +292,7 @@ class _HomePageState extends State<HomePage> {
                                                     "${postController.loadMoreItems.value[index].createdAt}",
                                                 topics: postController.loadMoreItems.value[index].topics,
                                                 onTap: () {
-                                                  TinTucDetailPage.push(context,
+                                                  PostDetailPage.push(context,
                                                       id: postController
                                                               .loadMoreItems
                                                               .value[index]

@@ -9,30 +9,32 @@ import '../../export.dart';
 import 'components/item_topic.dart';
 import 'post_detail_page.dart';
 
-class ListTinTucPage extends StatefulWidget {
-  ListTinTucPage({Key? key}) : super(key: key);
+class ListPostsPage extends StatefulWidget {
+  ListPostsPage({Key? key}) : super(key: key);
   static const String tag = "ListTinTucPage";
 
   @override
-  _ListTinTucPageState createState() => _ListTinTucPageState();
+  _ListPostsPageState createState() => _ListPostsPageState();
 }
 
-class _ListTinTucPageState extends State<ListTinTucPage> {
+class _ListPostsPageState extends State<ListPostsPage> {
   ScrollController scrollController = ScrollController();
-  PostsController tinTucController = Get.put(PostsController(), tag: ListTinTucPage.tag);
+  PostsController postsController =
+      Get.put(PostsController(), tag: ListPostsPage.tag);
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-
     scrollController.addListener(() async {
       if (scrollController.position.pixels ==
           scrollController.position.maxScrollExtent) {
-        tinTucController.loadMore();
+        postsController.loadMore();
       }
     });
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -41,12 +43,11 @@ class _ListTinTucPageState extends State<ListTinTucPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return SizedBox.expand(
       child: Container(
         color: ColorConst.white,
         child: GetBuilder<PostsController>(
-          tag: ListTinTucPage.tag,
+          tag: ListPostsPage.tag,
           builder: (controller) {
             if (controller.initialized == false) return SizedBox();
             return Column(
@@ -60,12 +61,9 @@ class _ListTinTucPageState extends State<ListTinTucPage> {
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: ColorConst.borderInputColor,width: 3
-                      )
-                    )
-                  ),
+                      border: Border(
+                          bottom: BorderSide(
+                              color: ColorConst.borderInputColor, width: 3))),
                   child: Wrap(
                     spacing: 10,
                     runSpacing: 10,
@@ -85,11 +83,11 @@ class _ListTinTucPageState extends State<ListTinTucPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: List.generate(
-                        controller.loadMoreItems.value.length+1,
+                        controller.loadMoreItems.value.length + 1,
                         (index) {
                           if (index == controller.loadMoreItems.value.length) {
                             if (controller.loadMoreItems.value.length >=
-                                (controller.pagination.value.limit ?? 10) ||
+                                    (controller.pagination.value.limit ?? 10) ||
                                 controller.loadMoreItems.value.length == 0) {
                               return WidgetLoading(
                                 notData: controller.lastItem,
@@ -111,15 +109,17 @@ class _ListTinTucPageState extends State<ListTinTucPage> {
                             padding: const EdgeInsets.all(16.0),
                             child: ItemPostComponent(
                               image:
-                              "${controller.loadMoreItems.value[index].featureImage}",
+                                  "${controller.loadMoreItems.value[index].featureImage}",
                               title:
-                              "${controller.loadMoreItems.value[index].title}",
+                                  "${controller.loadMoreItems.value[index].title}",
                               time:
-                              "${controller.loadMoreItems.value[index].createdAt}",
+                                  "${controller.loadMoreItems.value[index].createdAt}",
+                              topics:
+                                  controller.loadMoreItems.value[index].topics,
                               onTap: () {
-                                TinTucDetailPage.push(context,
+                                PostDetailPage.push(context,
                                     id: controller
-                                        .loadMoreItems.value[index].id ??
+                                            .loadMoreItems.value[index].id ??
                                         "");
                               },
                             ),

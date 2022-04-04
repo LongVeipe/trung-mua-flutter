@@ -54,7 +54,7 @@ class _SearchPageState extends State<SearchPage> {
             Expanded(
               child: TabBarComponent(
                 listScreen: [
-                  TinTucComponent(),
+                  PostComponent(),
                   LibraryScreen(tag: SearchController.tag),
                 ],
               ),

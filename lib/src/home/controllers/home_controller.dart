@@ -15,7 +15,7 @@ import 'weather_controller.dart';
 class HomeController extends GetxController {
   List<DocumentGroupModel> listDocumentGroup = [];
   WeatherController? weatherController;
-  PostsController? tinTucController = PostsController();
+  PostsController? postsController = PostsController();
 
   bool showLoadingInit = true;
 

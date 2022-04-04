@@ -59,7 +59,7 @@ class _NavigatorBottomPageState extends State<NavigatorBottomPage> {
       onItemSelected: (index) async{
         switch (index) {
           case 1:
-            Get.to(ListTinTucPage());
+            Get.to(ListPostsPage());
             break;
           case 2:
             // WaitingDialog.show(context);

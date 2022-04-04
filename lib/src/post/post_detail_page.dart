@@ -13,13 +13,13 @@ import 'package:viettel_app/src/post/controllers/post_controller.dart';
 
 import '../../export.dart';
 
-class TinTucDetailPage extends StatefulWidget {
+class PostDetailPage extends StatefulWidget {
   final String id;
 
-  TinTucDetailPage({Key? key, required this.id}) : super(key: key);
+  PostDetailPage({Key? key, required this.id}) : super(key: key);
 
   static push(BuildContext context, {required String id}) {
-    Get.to(TinTucDetailPage(
+    Get.to(PostDetailPage(
       id: id,
     ));
     // Navigator.of(context)
@@ -27,10 +27,10 @@ class TinTucDetailPage extends StatefulWidget {
   }
 
   @override
-  _TinTucDetailPageState createState() => _TinTucDetailPageState();
+  _PostDetailPageState createState() => _PostDetailPageState();
 }
 
-class _TinTucDetailPageState extends State<TinTucDetailPage> {
+class _PostDetailPageState extends State<PostDetailPage> {
   double fontSlider = defaultSize;
 
   @override
@@ -47,7 +47,7 @@ class _TinTucDetailPageState extends State<TinTucDetailPage> {
   Widget build(BuildContext context) {
     return GetBuilder<PostsController>(
       builder: (controller) {
-        if (controller.tinTucDetail == null) {
+        if (controller.postDetail == null) {
           return Scaffold(
             backgroundColor: Colors.white,
             body: Column(
@@ -67,7 +67,7 @@ class _TinTucDetailPageState extends State<TinTucDetailPage> {
 
         Widget html = WidgetHtml(
           dataHtml: """
-          ${controller.tinTucDetail?.content ?? ""}
+          ${controller.postDetail?.content ?? ""}
           """,
           fontSize: fontSlider,
         );
@@ -89,15 +89,15 @@ class _TinTucDetailPageState extends State<TinTucDetailPage> {
                         child: Column(
                           children: [
                             WidgetImageNetWork(
-                              url: controller.tinTucDetail?.featureImage,
+                              url: controller.postDetail?.featureImage,
                               width: MediaQuery.of(context).size.width,
                               height: MediaQuery.of(context).size.width,
                               fit: BoxFit.cover,
 
                             ),
                             titleContainer(context,
-                                text: controller.tinTucDetail?.title,
-                                time: controller.tinTucDetail?.createdAt),
+                                text: controller.postDetail?.title,
+                                time: controller.postDetail?.createdAt),
                             Padding(
                               padding: EdgeInsets.only(
                                   left: 15,

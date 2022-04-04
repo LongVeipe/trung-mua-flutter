@@ -74,6 +74,18 @@ class ItemPostComponent extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
+                      Row(
+                        children: List.generate(
+                            topics?.length ?? 0,
+                                (index) => Text(
+                              "${index != 0 ? " \u2022 " : ""}${topics![index].name}",
+                              style: StyleConst.italicStyle(
+                                  fontSize: miniSize),
+                            )),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       WidgetIconText(
                         iconAsset: AssetsConst.iconTime,
                         text: "Ngày đăng: $time",
@@ -82,18 +94,6 @@ class ItemPostComponent extends StatelessWidget {
                           fontSize: miniSize,
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: List.generate(
-                            topics?.length ?? 0,
-                            (index) => Text(
-                                  "${index != 0 ? " \u2022 " : ""}${topics![index].name}",
-                                  style: StyleConst.italicStyle(
-                                      fontSize: miniSize),
-                                )),
-                      )
                     ],
                   ),
             ),

@@ -12,7 +12,7 @@ class PostsController extends GraphqlListLoadMoreProvider<PostsModel> {
       // filter: {"topicSlugs": topicSlugs},
       order: {"_id": -1, "createdAt": -1});
 
-  PostsModel? tinTucDetail;
+  PostsModel? postDetail;
   String? topic;
 
   PostsController({QueryInput? query})
@@ -39,10 +39,10 @@ class PostsController extends GraphqlListLoadMoreProvider<PostsModel> {
   }
 
   getOnePost(String id) async {
-    tinTucDetail=null;
+    postDetail=null;
     try{
       var data = await _postsProvider.getOne(id: id, fragment: this.fragment);
-      tinTucDetail = data;
+      postDetail = data;
     }catch(error){
       print("getOnePost---error: $error");
     }

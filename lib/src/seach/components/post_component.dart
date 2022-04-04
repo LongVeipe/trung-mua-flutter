@@ -8,14 +8,14 @@ import 'package:viettel_app/src/post/post_detail_page.dart';
 
 import '../../../export.dart';
 
-class TinTucComponent extends StatefulWidget {
-  const TinTucComponent({Key? key}) : super(key: key);
+class PostComponent extends StatefulWidget {
+  const PostComponent({Key? key}) : super(key: key);
 
   @override
-  _TinTucComponentState createState() => _TinTucComponentState();
+  _PostComponentState createState() => _PostComponentState();
 }
 
-class _TinTucComponentState extends State<TinTucComponent> {
+class _PostComponentState extends State<PostComponent> {
   ScrollController scrollController = ScrollController();
 
   SearchController searchController = Get.find<SearchController>();
@@ -27,8 +27,8 @@ class _TinTucComponentState extends State<TinTucComponent> {
     scrollController.addListener(() async {
       if (scrollController.position.pixels ==
           scrollController.position.maxScrollExtent) {
-        if (searchController.tinTucController.lastItem = false) {
-          searchController.tinTucController.loadMore();
+        if (searchController.postsController.lastItem = false) {
+          searchController.postsController.loadMore();
         }
       }
     });
@@ -76,12 +76,14 @@ class _TinTucComponentState extends State<TinTucComponent> {
                                 color: ColorConst.backgroundColor, width: 2))),
                     padding: const EdgeInsets.all(16.0),
                     child: ItemPostComponent(
-                      image: "${controller.loadMoreItems.value[index].featureImage}",
+                      image:
+                          "${controller.loadMoreItems.value[index].featureImage}",
                       title: "${controller.loadMoreItems.value[index].title}",
                       time:
                           "${controller.loadMoreItems.value[index].createdAt}",
+                      topics: controller.loadMoreItems.value[index].topics,
                       onTap: () {
-                        TinTucDetailPage.push(context,
+                        PostDetailPage.push(context,
                             id: controller.loadMoreItems.value[index].id ?? "");
                       },
                     ),

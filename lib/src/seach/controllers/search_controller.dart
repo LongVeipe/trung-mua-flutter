@@ -10,14 +10,14 @@ class SearchController extends GetxController {
 
   int indexCurrent = 0;
   TextEditingController keySearch = TextEditingController(text: "");
-  PostsController tinTucController = Get.put(PostsController(), tag: tag);
+  PostsController postsController = Get.put(PostsController(), tag: tag);
   LibraryController libraryController = Get.put(LibraryController(),tag: tag);
 
   search(BuildContext context) {
     WaitingDialog.show(context);
     libraryController.lastItem=false;
-    tinTucController.lastItem=false;
-    tinTucController.loadAll(
+    postsController.lastItem=false;
+    postsController.loadAll(
         query: QueryInput(
             search: keySearch.text,
             limit: 10,page: 1,
