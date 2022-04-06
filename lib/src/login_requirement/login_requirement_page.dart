@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:viettel_app/config/theme/color-constant.dart';
 import 'package:viettel_app/config/theme/style-constant.dart';
 import 'package:viettel_app/export.dart';
+import 'package:viettel_app/shared/widget/widget_appbar.dart';
 import 'package:viettel_app/src/login/login_page.dart';
 
 class LoginRequirementPage extends StatelessWidget {
@@ -11,15 +12,13 @@ class LoginRequirementPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("Yêu cầu đăng nhập"), backgroundColor: ColorConst.primaryBackgroundLight, foregroundColor: ColorConst.textPrimary,),
       body: SafeArea(
         child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 48,
-                ),
+                SizedBox(height: 16,),
                 Image.asset(
                   AssetsConst.loginRequirement,
                   fit: BoxFit.fitWidth,
