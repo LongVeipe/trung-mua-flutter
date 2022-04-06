@@ -10,7 +10,9 @@ import 'login_otp_page.dart';
 import 'terms_of_use.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key? key}) : super(key: key);
+  final bool isLogin;
+
+  LoginPage({Key? key, this.isLogin = true}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -81,11 +83,10 @@ class _LoginPageState extends State<LoginPage> {
                           TextSpan(
                               text:
                                   "Công ty Cổ phần Công nghệ Thông Minh MiSmart\n",
-                            style: StyleConst.boldStyle(
-                              height: 1.5,
-                              fontSize: miniSize,
-                            )
-                          ),
+                              style: StyleConst.boldStyle(
+                                height: 1.5,
+                                fontSize: miniSize,
+                              )),
                           TextSpan(
                               text:
                                   "Giải nhất Viet Solutions 2020\ncuộc thi do Bộ Thông tin và Truyền thông và Viettel tổ chức."),
@@ -97,13 +98,15 @@ class _LoginPageState extends State<LoginPage> {
                   height: 30,
                 ),
                 Text(
-                  "ĐĂNG NHẬP",
+                  widget.isLogin ? "ĐĂNG NHẬP" : "TẠO TÀI KHOẢN",
                   style: StyleConst.boldStyle(fontSize: titleSize),
                 ),
-                Text(
-                  "Vui lòng điền thông tin đăng nhập",
-                  style: StyleConst.regularStyle(height: 1.5),
-                ),
+                widget.isLogin
+                    ? Text(
+                        "Vui lòng điền thông tin đăng nhập",
+                        style: StyleConst.regularStyle(height: 1.5),
+                      )
+                    : SizedBox.shrink(),
                 Padding(
                   padding: const EdgeInsets.only(left: 16, top: 30, right: 16),
                   child: Column(

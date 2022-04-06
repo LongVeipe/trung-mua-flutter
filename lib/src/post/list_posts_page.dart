@@ -104,7 +104,7 @@ class _ListPostsPageState extends State<ListPostsPage> {
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        color: ColorConst.backgroundColor,
+                                        color: ColorConst.primaryBackgroundLight,
                                         width: 2))),
                             padding: const EdgeInsets.all(16.0),
                             child: ItemPostComponent(

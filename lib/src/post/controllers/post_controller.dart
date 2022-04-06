@@ -73,7 +73,7 @@ class PostsController extends GraphqlListLoadMoreProvider<PostsModel> {
 }
 
 class PostsProvider extends CrudRepository<PostsModel> {
-  PostsProvider() : super(apiName: "Post");
+  PostsProvider() : super(apiName: "Post", isLoginRequired: false);
 
   @override
   PostsModel fromJson(Map<String, dynamic> json) {

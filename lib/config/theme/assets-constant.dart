@@ -56,6 +56,9 @@ class AssetsConst {
 
   static const String imageWeather = "assets/images/image_weather.png";
 
+  ///login requirement
+  static const String loginRequirement = "assets/images/login_requirement.png";
+
 
 
 

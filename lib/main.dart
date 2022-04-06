@@ -61,23 +61,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: FutureBuilder(
-      //   future: authController.userGetMe(),
-      //   builder: (BuildContext context, AsyncSnapshot snapshot ) {
-      //     if (snapshot.connectionState == ConnectionState.waiting)
-      //       return Container(
-      //         decoration: BoxDecoration(
-      //           color: Colors.white
-      //         ),
-      //       );
-      //     if (authController.userCurrent.id == null)
-      //       return LoginPage();
-      //     return checkFirst();
-      //   }
-      // ),
       home: checkFirst(),
-      // home: checkFirst(),
-      // home: NavigatorBottomPage(),
     );
   }
 
@@ -96,19 +80,15 @@ class MyApp extends StatelessWidget {
                     color: Colors.white
                   ),
                 );
-              if (authController.userCurrent.id == null) {
-                return LoginPage();
-              }
-              authController.init();
+              // if (authController.userCurrent.id == null) {
+              //   return LoginPage();
+              // }
+              // authController.init();
               return NavigatorBottomPage();
             }
         );
-      // return FlashScreenPage();
-      return InformationPersonalPage(checkFirst: true,);
-      // return NavigatorBottomPage();
-    } else {
-      return LoginPage();
     }
+    return NavigatorBottomPage();
   }
 }
 class MyHttpOverrides extends HttpOverrides{

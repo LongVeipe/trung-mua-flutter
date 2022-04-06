@@ -73,7 +73,7 @@ class _CategoryRepository extends GraphqlRepository {
   Future<List<PlantModel>> getPlants() async {
     var result = await this.query(
       """
-       getAllPlant(q:{
+       getAllGeneralPlant(q:{
           limit:1000,
           order:{
                   name: 1

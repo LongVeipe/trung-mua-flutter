@@ -21,5 +21,6 @@ class ColorConst {
   static const Color white = Colors.white;
   static final Color borderInputColor = Color(0xFF8A9EAD).withOpacity(0.2);
   static const Color blueAccent = Color(0xFF38D0FF);
-  static const Color backgroundColor = Color(0xFFF5F7F9);
+  static const Color primaryBackgroundLight = Color(0xFFF5F7F9);
+  static const Color secondaryBackgroundLight = Color(0xFFE0E0E0);
 }

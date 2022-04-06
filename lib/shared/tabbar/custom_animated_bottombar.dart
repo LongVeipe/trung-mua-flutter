@@ -6,6 +6,8 @@ import 'package:viettel_app/config/theme/style-constant.dart';
 import 'package:viettel_app/src/camera_search/camera_search_page.dart';
 import 'package:viettel_app/src/camera_search/components/take_picture_screen.dart';
 import 'package:viettel_app/src/home/nagivator_bottom_page.dart';
+import 'package:viettel_app/src/login/controllers/auth_controller.dart';
+import 'package:viettel_app/src/login_requirement/login_requirement_page.dart';
 
 import 'bottomnavybar_item.dart';
 import 'container_paint.dart';
@@ -58,7 +60,9 @@ class CustomAnimatedBottomBar extends StatelessWidget {
               indexDefault = 1;
               return GestureDetector(
                 onTap: () {
-                 Get.to(CameraSearchPage());
+                  Get.to(Get.find<AuthController>().isLogged()
+                      ? CameraSearchPage()
+                      : LoginRequirementPage());
                 },
                 child: Padding(
                   padding: EdgeInsets.only(bottom: 50),

@@ -159,7 +159,7 @@ class _DetailResultBienPhapHoaHocState
         ),
         Container(
           height: 2,
-          color: ColorConst.backgroundColor,
+          color: ColorConst.primaryBackgroundLight,
         ),
         Column(
           children: List.generate(
@@ -205,7 +205,7 @@ class _DetailResultBienPhapHoaHocState
             ),
             Container(
               height: 2,
-              color: ColorConst.backgroundColor,
+              color: ColorConst.primaryBackgroundLight,
             ),
             Column(
               children: List.generate(

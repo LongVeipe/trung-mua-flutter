@@ -33,13 +33,16 @@ class AuthController extends GetxController {
   }
 
   init() async {
-    // String? xToken = SPref.instance.get(AppKey.xToken);
-    // if (xToken != null && xToken.isNotEmpty) userGetMe();
     getInfoDevice();
-    if(listPlant.length==0){
+    if(listPlant.length == 0)
       getPlants();
-    }
   }
+
+  isLogged(){
+    return userCurrent.id != null;
+  }
+
+
 
   login({
     required String phone,
@@ -53,9 +56,7 @@ class AuthController extends GetxController {
         UserModel data =
             await authRepository.loginRepo(idToken: result.token ?? "");
         if (data.token != null && data.token!.isNotEmpty) {
-          await SPref.instance.set(AppKey.xToken, data.token ?? "");
-          await SPref.instance.set(AppKey.phoneNumber, phone);
-          await userGetMe();
+          await initDataAfterLoggedIn(data, phone);
           WaitingDialog.turnOff();
 
           if ((data.user?.name ?? "").isNotEmpty) {
@@ -119,5 +120,14 @@ class AuthController extends GetxController {
   getPlants() async {
     listPlant = await categoryRepository.getPlants();
     update();
+  }
+
+  initDataAfterLoggedIn(UserModel data, String phone) async {
+    await SPref.instance.set(AppKey.xToken, data.token ?? "");
+    await SPref.instance.set(AppKey.phoneNumber, phone);
+
+    userGetMe();
+    if(listPlant.length == 0)
+      getPlants();
   }
 }

@@ -61,7 +61,7 @@ class _DetailResultBienPhapPhongChongState
                           Container(
                             margin: EdgeInsets.only(top: 16),
                             height: 2,
-                            color: ColorConst.backgroundColor,
+                            color: ColorConst.primaryBackgroundLight,
                           ),
                           widgetItemEvent("Biện pháp canh tác", onTap: () {
                             // Get.to(DetailResultTrieuChungPage());
@@ -194,7 +194,7 @@ class _DetailResultBienPhapPhongChongState
         decoration: BoxDecoration(
             border: Border(
                 bottom:
-                    BorderSide(color: ColorConst.backgroundColor, width: 2))),
+                    BorderSide(color: ColorConst.primaryBackgroundLight, width: 2))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

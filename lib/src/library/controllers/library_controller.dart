@@ -42,7 +42,7 @@ class LibraryController extends GraphqlListLoadMoreProvider<DiseaseModel> {
 }
 
 class LibraryProvider extends CrudRepository<DiseaseModel> {
-  LibraryProvider() : super(apiName: "Disease");
+  LibraryProvider() : super(apiName: "Disease", isLoginRequired: false);
 
   @override
   DiseaseModel fromJson(Map<String, dynamic> json) {

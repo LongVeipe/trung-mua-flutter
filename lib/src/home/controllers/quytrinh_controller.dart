@@ -32,7 +32,7 @@ class QuyTrinhController extends GraphqlListLoadMoreProvider<DocumentModel> {
 }
 
 class QuyTrinhProvider extends CrudRepository<DocumentModel> {
-  QuyTrinhProvider():super(apiName: "Document");
+  QuyTrinhProvider():super(apiName: "Document", isLoginRequired: false);
   @override
   fromJson(Map<String, dynamic> json) {
     // TODO: implement fromJson

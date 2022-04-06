@@ -3,9 +3,14 @@ import 'package:gql/ast.dart';
 import 'package:get/get.dart';
 import 'package:gql/language.dart';
 import 'package:graphql/client.dart';
+import 'package:viettel_app/config/app_key.dart';
 import 'package:viettel_app/export.dart';
+import 'package:viettel_app/models/user/user_model.dart';
+import 'package:viettel_app/services/firebase/firebase_auth.dart';
+import 'package:viettel_app/src/login/controllers/auth_controller.dart';
 import 'package:viettel_app/src/login/login_page.dart';
 
+import '../spref.dart';
 import 'graphql_client.dart';
 
 class GraphqlRepository {
@@ -69,8 +74,11 @@ class GraphqlRepository {
     if (result.exception != null) {
       for (final err in result.exception!.graphqlErrors) {
         if(err.message == "Chưa xác thực") {
-          showSnackBar(title: "Thông báo", body: err.message,backgroundColor: Colors.red);
-          Get.offAll(LoginPage());
+          // showSnackBar(title: "Thông báo", body: err.message,backgroundColor: Colors.red);
+          // Get.offAll(LoginPage());
+          ConfigFirebaseAuth.intent.auth.signOut();
+          SPref.instance.clear();
+          Get.find<AuthController>().userCurrent = User();
         }
       }
     }

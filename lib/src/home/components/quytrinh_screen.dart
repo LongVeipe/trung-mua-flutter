@@ -328,7 +328,7 @@ class _QuyTrinhScreenState extends State<QuyTrinhScreen> {
         width: 20,
         height: 20,
         child: CircularProgressIndicator(
-            backgroundColor: ColorConst.backgroundColor,
+            backgroundColor: ColorConst.primaryBackgroundLight,
             value: data.valueProgress,
             strokeWidth: 3,
             valueColor: AlwaysStoppedAnimation(
