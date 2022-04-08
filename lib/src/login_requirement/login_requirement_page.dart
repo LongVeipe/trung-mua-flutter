@@ -61,20 +61,20 @@ class LoginRequirementPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: WidgetButton(
-                    text: "Tạo tài khoản mới",
+                    text: "Đăng nhập",
                     textColor: ColorConst.textPrimaryDark,
                     onTap: (){
-                      Get.to(LoginPage(isLogin: false,));
+                      Get.to(LoginPage());
                     },
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: WidgetButton(
-                    text: "Đăng nhập",
+                    text: "Tạo tài khoản mới",
                     backgroundColor: ColorConst.secondaryBackgroundLight,
                     onTap: () {
-                      Get.to(LoginPage());
+                      Get.to(LoginPage(isLogin: false,));
                     },
                   ),
                 ),
