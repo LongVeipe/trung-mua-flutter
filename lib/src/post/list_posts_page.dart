@@ -120,7 +120,7 @@ class _ListPostsPageState extends State<ListPostsPage> {
                                 PostDetailPage.push(context,
                                     id: controller
                                             .loadMoreItems.value[index].id ??
-                                        "");
+                                        "", tag: ListPostsPage.tag);
                               },
                             ),
                           );

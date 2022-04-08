@@ -20,6 +20,8 @@ abstract class GraphqlListProvider<T> extends GetxController {
       {required this.service,
       QueryInput? query,
       required String fragment}) {
+    if(service.apiName == "Post")
+      print("1111");
     this.fragment = fragment;
     if(service.isLoginRequired == true && Get.find<AuthController>().isLogged() == false)
       return;

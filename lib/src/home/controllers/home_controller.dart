@@ -1,21 +1,15 @@
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:viettel_app/models/category/document_group_model.dart';
-import 'package:viettel_app/repositories/category_repo.dart';
-import 'package:viettel_app/services/graphql/crud_repo.dart';
-import 'package:viettel_app/shared/helper/location.dart';
 import 'package:viettel_app/src/library/controllers/history_disease_scan_controller.dart';
-import 'package:viettel_app/src/login/controllers/auth_controller.dart';
 import 'package:viettel_app/src/support/controllers/support_controller.dart';
 import 'package:viettel_app/src/post/controllers/post_controller.dart';
-
 import 'quytrinh_controller.dart';
 import 'weather_controller.dart';
 
 class HomeController extends GetxController {
   List<DocumentGroupModel> listDocumentGroup = [];
   WeatherController? weatherController;
-  PostsController? postsController = PostsController();
+  // PostsController? postsController = Get.put(PostsController());
 
   bool showLoadingInit = true;
 

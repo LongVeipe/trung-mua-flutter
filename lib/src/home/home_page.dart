@@ -23,6 +23,7 @@ import 'controllers/home_controller.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
+  static const String tag = "HomePage";
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -35,6 +36,8 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     Get.delete<HomeController>();
     Get.put(HomeController());
+    Get.delete<PostsController>(tag: HomePage.tag);
+    Get.put(PostsController(), tag: HomePage.tag);
   }
 
   late MediaQueryData mediaQueryData;
@@ -227,7 +230,7 @@ class _HomePageState extends State<HomePage> {
 
                               ///tin mới
                               GetBuilder<PostsController>(
-                                init: homeController.postsController,
+                                tag: HomePage.tag,
                                 builder: (postController) {
                                   return Column(
                                     children: [
@@ -272,9 +275,9 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       // ItemTinTucComponent(),
                                       Visibility(
-                                        visible:
-                                            homeController.postsController !=
-                                                null,
+                                        // visible:
+                                        //     homeController.postsController !=
+                                        //         null,
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -302,12 +305,12 @@ class _HomePageState extends State<HomePage> {
                                                     .value[index]
                                                     .topics,
                                                 onTap: () {
-                                                  PostDetailPage.push(context,
+                                                  Get.to(PostDetailPage(
                                                       id: postController
                                                               .loadMoreItems
                                                               .value[index]
                                                               .id ??
-                                                          "");
+                                                          "", tag: HomePage.tag,));
                                                 },
                                               ),
                                             ),

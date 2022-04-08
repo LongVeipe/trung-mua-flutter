@@ -125,9 +125,8 @@ class AuthController extends GetxController {
   initDataAfterLoggedIn(UserModel data, String phone) async {
     await SPref.instance.set(AppKey.xToken, data.token ?? "");
     await SPref.instance.set(AppKey.phoneNumber, phone);
-
-    userGetMe();
+    await userGetMe();
     if(listPlant.length == 0)
-      getPlants();
+      await getPlants();
   }
 }

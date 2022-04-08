@@ -84,7 +84,7 @@ class _PostComponentState extends State<PostComponent> {
                       topics: controller.loadMoreItems.value[index].topics,
                       onTap: () {
                         PostDetailPage.push(context,
-                            id: controller.loadMoreItems.value[index].id ?? "");
+                            id: controller.loadMoreItems.value[index].id ?? "", tag: SearchController.tag);
                       },
                     ),
                   );
