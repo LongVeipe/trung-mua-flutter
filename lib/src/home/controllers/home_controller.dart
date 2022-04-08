@@ -17,7 +17,7 @@ class HomeController extends GetxController {
   void onInit() async {
     // TODO: implement onInit
     super.onInit();
-    Get.put(QuyTrinhController());
+    Get.put(KnowledgeController());
     try {
       Get.put(SupportController());
       Get.put(HistoryDiseaseScanController());

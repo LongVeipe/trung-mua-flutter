@@ -132,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                                             "",
                                         onTap: () async {
                                           if (index == 3) {
-                                            Get.to(QuyTrinhScreen(
+                                            Get.to(KnowledgeScreen(
                                               title: homeController
                                                       .listDocumentGroup[index]
                                                       .name ??

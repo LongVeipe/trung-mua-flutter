@@ -2,10 +2,10 @@ import 'package:viettel_app/models/document/document_model.dart';
 import 'package:viettel_app/services/graphql/crud_repo.dart';
 import 'package:viettel_app/services/graphql/graphql_list_load_more_provider.dart';
 
-class QuyTrinhController extends GraphqlListLoadMoreProvider<DocumentModel> {
-  static QuyTrinhProvider _quyTrinhProvider = QuyTrinhProvider();
+class KnowledgeController extends GraphqlListLoadMoreProvider<DocumentModel> {
+  static DocumentProvider _quyTrinhProvider = DocumentProvider();
 
-  QuyTrinhController({query})
+  KnowledgeController({query})
       : super(service: _quyTrinhProvider, query: query, fragment: """
        id
         groupCode
@@ -31,8 +31,8 @@ class QuyTrinhController extends GraphqlListLoadMoreProvider<DocumentModel> {
 
 }
 
-class QuyTrinhProvider extends CrudRepository<DocumentModel> {
-  QuyTrinhProvider():super(apiName: "Document", isLoginRequired: false);
+class DocumentProvider extends CrudRepository<DocumentModel> {
+  DocumentProvider():super(apiName: "Document", isLoginRequired: false);
   @override
   fromJson(Map<String, dynamic> json) {
     // TODO: implement fromJson
