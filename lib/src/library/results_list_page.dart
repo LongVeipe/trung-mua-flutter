@@ -48,7 +48,7 @@ class ResultsListPage extends StatelessWidget {
         decoration: BoxDecoration(
             border: Border(
                 bottom:
-                    BorderSide(color: ColorConst.backgroundColor, width: 2))),
+                    BorderSide(color: ColorConst.primaryBackgroundLight, width: 2))),
         padding: const EdgeInsets.all(16.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

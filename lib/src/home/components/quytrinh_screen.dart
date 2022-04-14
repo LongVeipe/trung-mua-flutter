@@ -17,21 +17,24 @@ import 'package:viettel_app/shared/widget/widget_html.dart';
 import 'package:viettel_app/shared/widget/widget_pdf_view.dart';
 import 'package:viettel_app/src/home/controllers/quytrinh_controller.dart';
 
-class QuyTrinhScreen extends StatefulWidget {
+class KnowledgeScreen extends StatefulWidget {
   final String title;
   final String groupCode;
+  static const String tag = "KnowledgePage";
 
   // List<QuyTrinhScreenDataTemple>? listData;
 
-  QuyTrinhScreen({Key? key, required this.title, required this.groupCode})
+  KnowledgeScreen({Key? key, required this.title, required this.groupCode})
       : super(key: key);
 
   @override
-  _QuyTrinhScreenState createState() => _QuyTrinhScreenState();
+  _KnowledgeScreenState createState() => _KnowledgeScreenState();
 }
 
-class _QuyTrinhScreenState extends State<QuyTrinhScreen> {
-  late QuyTrinhController quyTrinhController;
+class _KnowledgeScreenState extends State<KnowledgeScreen> {
+  KnowledgeController knowledgeController = Get.put(
+      KnowledgeController(query: QueryInput(filter: {})),
+      tag: KnowledgeScreen.tag);
   ScrollController scrollController = ScrollController();
   StreamController<double> _stream = StreamController.broadcast();
 
@@ -46,14 +49,10 @@ class _QuyTrinhScreenState extends State<QuyTrinhScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // quyTrinhController = Get.put(QuyTrinhController(
-    //     query: QueryInput(filter: {"groupCode": "${widget.groupCode}"})));
-    quyTrinhController = Get.put(QuyTrinhController(
-        query: QueryInput(filter: {})));
     scrollController.addListener(() async {
       if (scrollController.position.pixels ==
           scrollController.position.maxScrollExtent) {
-        quyTrinhController.loadMore();
+        knowledgeController.loadMore();
       }
     });
   }
@@ -69,40 +68,42 @@ class _QuyTrinhScreenState extends State<QuyTrinhScreen> {
             turnOffSearch: true,
           ),
           Expanded(
-            child: GetBuilder<QuyTrinhController>(builder: (controller) {
-              return SingleChildScrollView(
-                controller: scrollController,
-                child: Column(
-                  children: List.generate(
-                      controller.loadMoreItems.value.length + 1, (index) {
-                    if (index == controller.loadMoreItems.value.length) {
-                      if (controller.loadMoreItems.value.length >=
-                              (controller.pagination.value.limit ?? 10) ||
-                          controller.loadMoreItems.value.length == 0) {
-                        if (controller.lastItem == true) {
-                          return WidgetLoading(
-                            notData: controller.lastItem,
-                            titleNotData: "Không có dự liệu",
-                          );
+            child: GetBuilder<KnowledgeController>(
+                tag: KnowledgeScreen.tag,
+                builder: (controller) {
+                  return SingleChildScrollView(
+                    controller: scrollController,
+                    child: Column(
+                      children: List.generate(
+                          controller.loadMoreItems.value.length + 1, (index) {
+                        if (index == controller.loadMoreItems.value.length) {
+                          if (controller.loadMoreItems.value.length >=
+                                  (controller.pagination.value.limit ?? 10) ||
+                              controller.loadMoreItems.value.length == 0) {
+                            if (controller.lastItem == true) {
+                              return WidgetLoading(
+                                notData: controller.lastItem,
+                                titleNotData: "Không có dự liệu",
+                              );
+                            }
+                            return WidgetLoading(
+                              notData: controller.lastItem,
+                            );
+                          } else {
+                            // print("controller.lastItem---- ${controller.lastItem}");
+                            return SizedBox.shrink();
+                          }
                         }
-                        return WidgetLoading(
-                          notData: controller.lastItem,
-                        );
-                      } else {
-                        // print("controller.lastItem---- ${controller.lastItem}");
-                        return SizedBox.shrink();
-                      }
-                    }
-                    if (controller.lastItem == false &&
-                        controller.loadMoreItems.value.length == 0) {
-                      return WidgetLoading();
-                    }
-                    return widgetItemQuyTrinh(
-                        context, controller.loadMoreItems.value[index]);
-                  }),
-                ),
-              );
-            }),
+                        if (controller.lastItem == false &&
+                            controller.loadMoreItems.value.length == 0) {
+                          return WidgetLoading();
+                        }
+                        return widgetItemQuyTrinh(
+                            context, controller.loadMoreItems.value[index]);
+                      }),
+                    ),
+                  );
+                }),
           ),
         ],
       ),
@@ -328,7 +329,7 @@ class _QuyTrinhScreenState extends State<QuyTrinhScreen> {
         width: 20,
         height: 20,
         child: CircularProgressIndicator(
-            backgroundColor: ColorConst.backgroundColor,
+            backgroundColor: ColorConst.primaryBackgroundLight,
             value: data.valueProgress,
             strokeWidth: 3,
             valueColor: AlwaysStoppedAnimation(
@@ -341,7 +342,7 @@ class _QuyTrinhScreenState extends State<QuyTrinhScreen> {
         WaitingDialog.show(context);
         try {
           print("data.downloadUrl1------- ${data.downloadUrl}");
-          var dataDownload = await quyTrinhController.getOneDocument(id);
+          var dataDownload = await knowledgeController.getOneDocument(id);
           data.downloadUrl = dataDownload.attachments
                   ?.firstWhere((element) => element.id == data.id)
                   .downloadUrl ??

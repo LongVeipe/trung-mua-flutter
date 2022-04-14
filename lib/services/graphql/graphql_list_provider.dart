@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:viettel_app/src/login/controllers/auth_controller.dart';
 import 'crud_repo.dart';
 
 abstract class GraphqlListProvider<T> extends GetxController {
@@ -19,7 +20,11 @@ abstract class GraphqlListProvider<T> extends GetxController {
       {required this.service,
       QueryInput? query,
       required String fragment}) {
+    if(service.apiName == "Post")
+      print("1111");
     this.fragment = fragment;
+    if(service.isLoginRequired == true && Get.find<AuthController>().isLogged() == false)
+      return;
     this.loadAll(query: query);
   }
 

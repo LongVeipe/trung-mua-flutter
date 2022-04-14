@@ -6,6 +6,8 @@ import 'package:viettel_app/shared/tabbar/bottomnavybar_item.dart';
 import 'package:viettel_app/shared/tabbar/custom_animated_bottombar.dart';
 import 'package:viettel_app/src/feedback/feedback_page.dart';
 import 'package:viettel_app/src/library/library_page.dart';
+import 'package:viettel_app/src/login/controllers/auth_controller.dart';
+import 'package:viettel_app/src/login_requirement/login_requirement_page.dart';
 import 'package:viettel_app/src/post/list_posts_page.dart';
 
 import 'home_page.dart';
@@ -56,25 +58,20 @@ class _NavigatorBottomPageState extends State<NavigatorBottomPage> {
       showElevation: true,
       itemCornerRadius: 24,
       curve: Curves.easeIn,
-      onItemSelected: (index) async{
+      onItemSelected: (index) async {
         switch (index) {
           case 1:
             Get.to(ListPostsPage());
             break;
           case 2:
-            // WaitingDialog.show(context);
-            // try {
-            //   await Get.find<SupportController>().initSupport([]);
-            // } catch (error) {
-            //   print(error);
-            // }
-            // WaitingDialog.turnOff();
-            // Get.to(SupportPage());
-            Get.to(FeedBackPage());
-
+            Get.to(Get.find<AuthController>().isLogged()
+                ? () => FeedBackPage()
+                : () => LoginRequirementPage());
             break;
           case 3:
-            Get.to(LibraryPage());
+            Get.to(Get.find<AuthController>().isLogged()
+                ? LibraryPage()
+                : LoginRequirementPage());
             break;
           default:
             setState(() => _currentIndex = index);

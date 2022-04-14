@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:viettel_app/src/login/controllers/auth_controller.dart';
 
 import 'graphql_repo.dart';
 
@@ -67,11 +69,19 @@ abstract class CrudRepository<T> extends GraphqlRepository {
   String? shortFragment;
   String? fullFragment;
   bool? isPaging = true;
+  bool? isLoginRequired = true;
 
   T fromJson(Map<String, dynamic> json);
 
-  CrudRepository({apiName, shortFragment, fullFragment, isPaging}) {
-    this.apiName = apiName ?? this.apiName;
+  CrudRepository({apiName, shortFragment, fullFragment, isPaging, isLoginRequired}) {
+    if(isLoginRequired != null)
+      this.isLoginRequired = isLoginRequired;
+    if(this.isLoginRequired == false && Get.find<AuthController>().isLogged() == false){
+      this.apiName = "General$apiName";
+    }
+    else{
+      this.apiName = apiName ?? "";
+    }
     this.shortFragment = shortFragment ?? this.shortFragment;
     this.fullFragment = fullFragment ?? this.fullFragment;
     if(isPaging != null)

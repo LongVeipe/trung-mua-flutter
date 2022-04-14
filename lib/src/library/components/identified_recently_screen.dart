@@ -39,7 +39,7 @@ class _IdentifiedRecentlyScreenState extends State<IdentifiedRecentlyScreen> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        color: ColorConst.backgroundColor,
+        color: ColorConst.primaryBackgroundLight,
         child: GetBuilder<HistoryDiseaseScanController>(
           tag: "IdentifiedRecentlyScreen",
           builder: (controller) {

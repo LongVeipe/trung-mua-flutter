@@ -33,10 +33,10 @@ class WidgetImageNetWork extends StatelessWidget {
                   width: this.width ?? MediaQuery.of(context).size.width / 5,
                   child: Center(child: spinKit)),
         errorWidget: (context, url, error) =>  Image(
-              height: this.height ?? MediaQuery.of(context).size.width / 5,
+              height: this.height?? MediaQuery.of(context).size.width / 5,
               width: this.width ?? MediaQuery.of(context).size.width / 5,
               image: AssetImage(AssetsConst.errorPlaceHolder),
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
       );
 

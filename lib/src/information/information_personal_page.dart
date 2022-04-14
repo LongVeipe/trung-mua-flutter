@@ -99,7 +99,7 @@ class _InformationPersonalPageState extends State<InformationPersonalPage> {
                   builder: (controller) {
                     return Expanded(
                       child: Container(
-                        color: ColorConst.backgroundColor,
+                        color: ColorConst.primaryBackgroundLight,
                         child: Stack(
                           children: [
                             SingleChildScrollView(

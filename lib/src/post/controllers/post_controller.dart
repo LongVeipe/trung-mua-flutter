@@ -7,7 +7,6 @@ import 'package:viettel_app/services/graphql/graphql_list_load_more_provider.dar
 List<TopicModel> listTopic = [];
 
 class PostsController extends GraphqlListLoadMoreProvider<PostsModel> {
-  static PostsProvider _postsProvider = PostsProvider();
   static QueryInput _queryInput = QueryInput(
       // filter: {"topicSlugs": topicSlugs},
       order: {"_id": -1, "createdAt": -1});
@@ -17,7 +16,7 @@ class PostsController extends GraphqlListLoadMoreProvider<PostsModel> {
 
   PostsController({QueryInput? query})
       : super(
-            service: _postsProvider, query: query ?? _queryInput, fragment: """
+            service: PostsProvider(), query: query ?? _queryInput, fragment: """
       id
       createdAt
       title
@@ -41,7 +40,7 @@ class PostsController extends GraphqlListLoadMoreProvider<PostsModel> {
   getOnePost(String id) async {
     postDetail=null;
     try{
-      var data = await _postsProvider.getOne(id: id, fragment: this.fragment);
+      var data = await this.service.getOne(id: id, fragment: this.fragment);
       postDetail = data;
     }catch(error){
       print("getOnePost---error: $error");
@@ -73,7 +72,7 @@ class PostsController extends GraphqlListLoadMoreProvider<PostsModel> {
 }
 
 class PostsProvider extends CrudRepository<PostsModel> {
-  PostsProvider() : super(apiName: "Post");
+  PostsProvider() : super(apiName: "Post", isLoginRequired: false);
 
   @override
   PostsModel fromJson(Map<String, dynamic> json) {

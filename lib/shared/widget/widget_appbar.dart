@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:viettel_app/src/login/controllers/auth_controller.dart';
 import 'package:viettel_app/src/notification/notification_page.dart';
 import 'package:viettel_app/src/seach/search_page.dart';
 
@@ -102,7 +103,8 @@ class WidgetAppbar extends StatelessWidget {
             ),
           ),
           Visibility(
-            visible: !turnOffNotification,
+            // visible: !turnOffNotification,
+            visible: Get.find<AuthController>().isLogged(),
             child: GestureDetector(
               onTap: () {
                 Get.to(NotificationPage());

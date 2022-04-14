@@ -20,7 +20,7 @@ class WidgetItemEvent extends StatelessWidget {
         decoration: BoxDecoration(
             border: Border(
                 bottom:
-                    BorderSide(color: ColorConst.backgroundColor, width: 2))),
+                    BorderSide(color: ColorConst.primaryBackgroundLight, width: 2))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

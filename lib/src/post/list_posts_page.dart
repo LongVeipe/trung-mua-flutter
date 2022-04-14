@@ -104,7 +104,7 @@ class _ListPostsPageState extends State<ListPostsPage> {
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        color: ColorConst.backgroundColor,
+                                        color: ColorConst.primaryBackgroundLight,
                                         width: 2))),
                             padding: const EdgeInsets.all(16.0),
                             child: ItemPostComponent(
@@ -120,7 +120,7 @@ class _ListPostsPageState extends State<ListPostsPage> {
                                 PostDetailPage.push(context,
                                     id: controller
                                             .loadMoreItems.value[index].id ??
-                                        "");
+                                        "", tag: ListPostsPage.tag);
                               },
                             ),
                           );

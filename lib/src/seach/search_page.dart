@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:viettel_app/shared/widget/widget_appbar.dart';
 import 'package:viettel_app/shared/widget/widget_search.dart';
 import 'package:viettel_app/src/library/components/library_svgh_screen.dart';
+import 'package:viettel_app/src/login/controllers/auth_controller.dart';
 import 'package:viettel_app/src/seach/components/tabbar_component.dart';
 import 'package:viettel_app/src/seach/controllers/search_controller.dart';
 import 'package:viettel_app/src/post/controllers/post_controller.dart';
@@ -40,6 +41,7 @@ class _SearchPageState extends State<SearchPage> {
             WidgetAppbar(
               title: "Tìm kiếm",
               turnOffSearch: true,
+              turnOffNotification: !Get.find<AuthController>().isLogged(),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 22, right: 20, left: 20),

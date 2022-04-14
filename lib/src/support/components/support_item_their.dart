@@ -42,7 +42,7 @@ class SupportItemTheir extends StatelessWidget {
                     padding: paddingAll,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      color: ColorConst.backgroundColor,
+                      color: ColorConst.primaryBackgroundLight,
                       // border: Border(
                       //   bottom: BorderSide(
                       //     color: ColorConst.backgroundColor

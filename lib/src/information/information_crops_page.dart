@@ -54,7 +54,7 @@ class _InformationCropsPageState extends State<InformationCropsPage> {
             ),
             Expanded(
               child: Container(
-                color: ColorConst.backgroundColor,
+                color: ColorConst.primaryBackgroundLight,
                 width: MediaQuery.of(context).size.width,
                 child: GetBuilder<AuthController>(
                   builder: (controller) {

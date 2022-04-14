@@ -85,7 +85,7 @@ class _DetailResultPageState extends State<DetailResultPage> {
                           Container(
                             margin: EdgeInsets.only(top: 16),
                             height: 2,
-                            color: ColorConst.backgroundColor,
+                            color: ColorConst.primaryBackgroundLight,
                           ),
                           WidgetItemEvent("Triệu chứng", onTap: () {
                             // Get.to(DetailResultTrieuChungPage());

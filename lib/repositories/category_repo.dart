@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:viettel_app/models/category/district_model.dart';
 import 'package:viettel_app/models/category/document_group_model.dart';
 import 'package:viettel_app/models/category/province_model.dart';
@@ -5,6 +6,7 @@ import 'package:viettel_app/models/category/ward_model.dart';
 import 'package:viettel_app/models/post/topic_model.dart';
 import 'package:viettel_app/models/user/plant_model.dart';
 import 'package:viettel_app/services/graphql/graphql_repo.dart';
+import 'package:viettel_app/src/login/controllers/auth_controller.dart';
 
 class _CategoryRepository extends GraphqlRepository {
   Future<List<ProvinceModel>> getProvince() async {
@@ -65,7 +67,8 @@ class _CategoryRepository extends GraphqlRepository {
     }
     return [];
   }
-  String paramQueryPlants=""" id
+
+  String paramQueryPlants = """ id
             name
             image
             createdAt""";
@@ -73,7 +76,7 @@ class _CategoryRepository extends GraphqlRepository {
   Future<List<PlantModel>> getPlants() async {
     var result = await this.query(
       """
-       getAllPlant(q:{
+       getAllGeneralPlant(q:{
           limit:1000,
           order:{
                   name: 1
@@ -97,7 +100,7 @@ class _CategoryRepository extends GraphqlRepository {
   Future<List<TopicModel>> getAllTopic() async {
     var result = await this.query(
       """
-        getAllTopic(q:{
+        getAll${Get.find<AuthController>().isLogged() ? "Topic" : "GeneralTopic"}(q:{
                     order:{
                       _id:-1,
                         priority:-1
@@ -139,12 +142,11 @@ class _CategoryRepository extends GraphqlRepository {
 
     this.handleException(result);
     if (result.data?["g0"] != null) {
-      return List<DocumentGroupModel>.from(
-          result.data?["g0"]["data"].map((d) => DocumentGroupModel.fromJson(d)));
+      return List<DocumentGroupModel>.from(result.data?["g0"]["data"]
+          .map((d) => DocumentGroupModel.fromJson(d)));
     }
     return [];
   }
-
 }
 
 final categoryRepository = new _CategoryRepository();

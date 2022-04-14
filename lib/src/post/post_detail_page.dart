@@ -15,12 +15,14 @@ import '../../export.dart';
 
 class PostDetailPage extends StatefulWidget {
   final String id;
+  final String tag;
 
-  PostDetailPage({Key? key, required this.id}) : super(key: key);
+  PostDetailPage({Key? key, required this.id, required this.tag}) : super(key: key);
 
-  static push(BuildContext context, {required String id}) {
+  static push(BuildContext context, {required String id, required String tag}) {
     Get.to(PostDetailPage(
       id: id,
+      tag: tag,
     ));
     // Navigator.of(context)
     //     .push(MaterialPageRoute(builder: (_) => TinTucDetailPage(id: id,)));
@@ -37,7 +39,8 @@ class _PostDetailPageState extends State<PostDetailPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Get.find<PostsController>().getOnePost(widget.id);
+    bool test = Get.isRegistered<PostsController>(tag: widget.tag);
+    Get.find<PostsController>(tag: widget.tag).getOnePost(widget.id);
   }
   final spinKit = SpinKitCircle(
     color: ColorConst.primaryColor,
@@ -46,6 +49,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<PostsController>(
+      tag: widget.tag,
       builder: (controller) {
         if (controller.postDetail == null) {
           return Scaffold(

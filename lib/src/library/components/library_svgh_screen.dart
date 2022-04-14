@@ -71,7 +71,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
             }
 
             return Container(
-              color: ColorConst.backgroundColor,
+              color: ColorConst.primaryBackgroundLight,
               width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [

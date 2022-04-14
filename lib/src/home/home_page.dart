@@ -12,6 +12,7 @@ import 'package:viettel_app/services/spref.dart';
 import 'package:viettel_app/shared/helper/print_log.dart';
 import 'package:viettel_app/src/components/item_post_component.dart';
 import 'package:viettel_app/src/login/controllers/auth_controller.dart';
+import 'package:viettel_app/src/login_requirement/login_requirement_page.dart';
 import 'package:viettel_app/src/post/controllers/post_controller.dart';
 import 'package:viettel_app/src/post/list_posts_page.dart';
 import 'package:viettel_app/src/post/post_detail_page.dart';
@@ -22,6 +23,7 @@ import 'controllers/home_controller.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
+  static const String tag = "HomePage";
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -34,6 +36,8 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     Get.delete<HomeController>();
     Get.put(HomeController());
+    Get.delete<PostsController>(tag: HomePage.tag);
+    Get.put(PostsController(), tag: HomePage.tag);
   }
 
   late MediaQueryData mediaQueryData;
@@ -128,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                                             "",
                                         onTap: () async {
                                           if (index == 3) {
-                                            Get.to(QuyTrinhScreen(
+                                            Get.to(KnowledgeScreen(
                                               title: homeController
                                                       .listDocumentGroup[index]
                                                       .name ??
@@ -196,9 +200,15 @@ class _HomePageState extends State<HomePage> {
                                                       "https://apps.apple.com/vn/app/miagri-qu%E1%BA%A3n-l%C3%BD/id1607440248");
                                                 }
                                               }
-                                            } else if (index == 0)
-                                              url =
-                                                  "https://miagri.vn/${SPref.instance.get(AppKey.phoneNumber)}";
+                                            } else if (index == 0) {
+                                              if (Get.find<AuthController>()
+                                                  .isLogged())
+                                                url =
+                                                    "https://miagri.vn/${SPref.instance.get(AppKey.phoneNumber)}";
+                                              else
+                                                return Get.to(
+                                                    LoginRequirementPage());
+                                            }
 
                                             if (await canLaunch(
                                                 url.toString())) {
@@ -220,7 +230,7 @@ class _HomePageState extends State<HomePage> {
 
                               ///tin mới
                               GetBuilder<PostsController>(
-                                init: homeController.postsController,
+                                tag: HomePage.tag,
                                 builder: (postController) {
                                   return Column(
                                     children: [
@@ -265,9 +275,9 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       // ItemTinTucComponent(),
                                       Visibility(
-                                        visible:
-                                            homeController.postsController !=
-                                                null,
+                                        // visible:
+                                        //     homeController.postsController !=
+                                        //         null,
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -279,7 +289,7 @@ class _HomePageState extends State<HomePage> {
                                                   border: Border(
                                                       bottom: BorderSide(
                                                           color: ColorConst
-                                                              .backgroundColor,
+                                                              .primaryBackgroundLight,
                                                           width: 2))),
                                               padding:
                                                   const EdgeInsets.all(16.0),
@@ -290,14 +300,17 @@ class _HomePageState extends State<HomePage> {
                                                     "${postController.loadMoreItems.value[index].title}",
                                                 time:
                                                     "${postController.loadMoreItems.value[index].createdAt}",
-                                                topics: postController.loadMoreItems.value[index].topics,
+                                                topics: postController
+                                                    .loadMoreItems
+                                                    .value[index]
+                                                    .topics,
                                                 onTap: () {
-                                                  PostDetailPage.push(context,
+                                                  Get.to(PostDetailPage(
                                                       id: postController
                                                               .loadMoreItems
                                                               .value[index]
                                                               .id ??
-                                                          "");
+                                                          "", tag: HomePage.tag,));
                                                 },
                                               ),
                                             ),

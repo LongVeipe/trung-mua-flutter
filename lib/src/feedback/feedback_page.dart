@@ -48,7 +48,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
             ),
             Expanded(
               child: Container(
-                color: ColorConst.backgroundColor,
+                color: ColorConst.primaryBackgroundLight,
                 child: SingleChildScrollView(
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   child: Column(

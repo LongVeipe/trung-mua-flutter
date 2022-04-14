@@ -73,7 +73,7 @@ class _PostComponentState extends State<PostComponent> {
                     decoration: BoxDecoration(
                         border: Border(
                             bottom: BorderSide(
-                                color: ColorConst.backgroundColor, width: 2))),
+                                color: ColorConst.primaryBackgroundLight, width: 2))),
                     padding: const EdgeInsets.all(16.0),
                     child: ItemPostComponent(
                       image:
@@ -84,7 +84,7 @@ class _PostComponentState extends State<PostComponent> {
                       topics: controller.loadMoreItems.value[index].topics,
                       onTap: () {
                         PostDetailPage.push(context,
-                            id: controller.loadMoreItems.value[index].id ?? "");
+                            id: controller.loadMoreItems.value[index].id ?? "", tag: SearchController.tag);
                       },
                     ),
                   );
