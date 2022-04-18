@@ -306,11 +306,13 @@ class _HomePageState extends State<HomePage> {
                                                     .topics,
                                                 onTap: () {
                                                   Get.to(PostDetailPage(
-                                                      id: postController
-                                                              .loadMoreItems
-                                                              .value[index]
-                                                              .id ??
-                                                          "", tag: HomePage.tag,));
+                                                    id: postController
+                                                            .loadMoreItems
+                                                            .value[index]
+                                                            .id ??
+                                                        "",
+                                                    tag: HomePage.tag,
+                                                  ));
                                                 },
                                               ),
                                             ),
@@ -381,5 +383,31 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  launchApp(String url, String packageName, ) async {
+    try {
+      print(await canLaunch(url));
+      return await launch(url).then((value) async {
+        if (value == false) {
+          if (Platform.isAndroid) {
+            return await launch(
+                "https://play.google.com/store/apps/details?id=mcom.app.miagrishop");
+          } else {
+            return await launch(
+                "https://apps.apple.com/vn/app/miagri/id1611335505");
+          }
+        }
+      });
+    } catch (error) {
+      printLog("error: $error");
+      if (Platform.isAndroid) {
+        return await launch(
+            "https://play.google.com/store/apps/details?id=mcom.app.miagrishop");
+      } else {
+        return await launch(
+            "https://apps.apple.com/vn/app/miagri/id1611335505");
+      }
+    }
   }
 }
