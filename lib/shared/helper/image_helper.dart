@@ -93,7 +93,8 @@ showSelectImage(
 }
 
 Future uploadImage(String path, {Function(String?)? onUpdateImage}) async {
-  final uri = 'https://app-trung-mua.mismart.ai/api/file/upload-no-save';
+  String host = BackendHost.BACKEND_HTTP.split('graphql').first;
+  final uri = '${host}api/file/upload-no-save';
   String xToken = SPref.instance.get(AppKey.xToken);
   if (path.isNotEmpty) {
     var request = http.MultipartRequest('POST', Uri.parse(uri));
