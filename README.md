@@ -1,4 +1,4 @@
-# viettel_app
+# trung_mua_app
 
 A new Flutter project.
 
